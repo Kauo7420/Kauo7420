@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 像素涂鸦世界</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 像素背景 */
+        .pixel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .pixel {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #4CAF50;
+            opacity: 0.3;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        /* 主容器 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            transform: rotate(2deg);
+        }
+
+        /* 标题区域 - 错位设计 */
+        .title-section {
+            transform: rotate(-5deg) translateX(30px) translateY(-20px);
+            margin-bottom: 50px;
+            background: white;
+            border: 3px solid black;
+            padding: 30px;
+            box-shadow: 15px 15px 0 rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .title-section:hover {
+            transform: rotate(-2deg) translateX(30px) translateY(-20px) scale(1.03);
+            box-shadow: 20px 20px 0 rgba(0,0,0,0.2);
+        }
+
+        /* 404 标题样式 */
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            background: repeating-linear-gradient(
+                45deg,
+                #000,
+                #000 10px,
+                #4CAF50 10px,
+                #4CAF50 20px
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .error-text {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* 信息区域 - 倾斜设计 */
+        .message-section {
+            transform: rotate(3deg) translateX(-40px) translateY(10px);
+            background: white;
+            border: 3px solid black;
+            padding: 30px 40px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            box-shadow: -15px 15px 0 rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .message-section:hover {
+            transform: rotate(1deg) translateX(-40px) translateY(10px) scale(1.03);
+            box-shadow: -20px 20px 0 rgba(0,0,0,0.2);
+        }
+
+        .message-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .icons i {
+            font-size: 32px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .icons i:hover {
+            color: #4CAF50;
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* 按钮区域 - 交互设计 */
+        .button-section {
+            transform: rotate(-2deg) translateY(30px);
+            z-index: 15;
+            transition: all 0.3s ease;
+        }
+
+        .button-section:hover {
+            transform: rotate(-1deg) translateY(30px) scale(1.05);
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 16px 50px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 0 #4CAF50;
+            letter-spacing: 2px;
+        }
+
+        .home-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 13px 0 #4CAF50;
+            background: #333;
+        }
+
+        .home-button:active {
+            transform: translateY(2px);
+            box-shadow: 5px 5px 0 #4CAF50;
+        }
+
+        .home-button i {
+            margin-right: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .home-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* 涂鸦装饰元素 */
+        .doodle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .doodle-1 {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            border: 4px dashed #4CAF50;
+            transform: rotate(45deg);
+            animation: pulse 4s infinite;
+        }
+
+        .doodle-2 {
+            top: 20%;
+            right: 8%;
+            width: 60px;
+            height: 60px;
+            border: 3px dotted black;
+            border-radius: 50%;
+            animation: rotate 15s linear infinite;
+        }
+
+        .doodle-3 {
+            bottom: 25%;
+            left: 12%;
+            width: 100px;
+            height: 40px;
+            border: 3px solid black;
+            transform: skewX(-20deg);
+        }
+
+        .doodle-4 {
+            bottom: 15%;
+            right: 15%;
+            width: 70px;
+            height: 70px;
+            border: 4px solid #4CAF50;
+            transform: rotate(30deg);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        /* 动画效果 */
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: rotate(45deg) scale(0.9); }
+            50% { opacity: 0.7; transform: rotate(45deg) scale(1.1); }
+            100% { opacity: 0.3; transform: rotate(45deg) scale(0.9); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 80px;
+            }
+            .error-text {
+                font-size: 22px;
+            }
+            .message-section {
+                padding: 20px;
+            }
+            .doodle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态像素背景 -->
+    <div class="pixel-bg" id="pixelBg"></div>
+    
+    <!-- 涂鸦装饰元素 -->
+    <div class="doodle doodle-1"></div>
+    <div class="doodle doodle-2"></div>
+    <div class="doodle doodle-3"></div>
+    <div class="doodle doodle-4"></div>
+    
+    <div class="container">
+        <!-- 标题区域 -->
+        <div class="title-section">
+            <div class="error-code">404</div>
+            <div class="error-text">页面未找到</div>
+        </div>
+        
+        <!-- 信息区域 -->
+        <div class="message-section">
+            <p><i class="fas fa-exclamation-circle"></i> 哎呀！您访问的页面好像被像素怪兽吃掉了</p>
+            <p>可能页面已被移除、重命名或暂时不可用</p>
+            
+            <div class="icons">
+                <i class="fas fa-ghost"></i>
+                <i class="fas fa-gamepad"></i>
+                <i class="fas fa-paint-brush"></i>
+                <i class="fas fa-question"></i>
+            </div>
+        </div>
+        
+        <!-- 按钮区域 -->
+        <div class="button-section">
+            <a href="main.html" class="home-button">
+                <i class="fas fa-home"></i> 返回首页
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 动态生成像素背景
+        function createPixelBackground() {
+            const pixelBg = document.getElementById('pixelBg');
+            const pixelCount = 50;
+            
+            for (let i = 0; i < pixelCount; i++) {
+                const pixel = document.createElement('div');
+                pixel.classList.add('pixel');
+                
+                // 随机位置
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                pixel.style.left = `${left}%`;
+                pixel.style.top = `${top}%`;
+                
+                // 随机大小
+                const size = 10 + Math.random() * 20;
+                pixel.style.width = `${size}px`;
+                pixel.style.height = `${size}px`;
+                
+                // 随机动画延迟
+                pixel.style.animationDelay = `${Math.random() * 5}s`;
+                
+                pixelBg.appendChild(pixel);
+            }
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', () => {
+            createPixelBackground();
+            
+            // 添加交互效果 - 鼠标移动时轻微移动元素
+            document.addEventListener('mousemove', (e) => {
+                const container = document.querySelector('.container');
+                const x = (window.innerWidth / 2 - e.clientX) / 30;
+                const y = (window.innerHeight / 2 - e.clientY) / 30;
+                container.style.transform = `rotate(2deg) translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
