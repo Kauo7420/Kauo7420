@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft插件导航 - 发现最佳服务器插件</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff6b6b;
             --secondary: #4ecdc4;
             --accent: #ffd166;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
             --success: #06d6a0;
             --warning: #ffb74d;
             --danger: #ef476f;
@@ -19,27 +18,19 @@
             --text: #212529;
             --card-bg: #ffffff;
             --sidebar-bg: #ffffff;
+            --input-bg: #ffffff;
             --shadow: rgba(0, 0, 0, 0.1);
             --pixel-border: 4px solid #000;
             --modal-bg: #ffffff;
-        }
-
-        .dark-mode {
-            --bg: #1a1a2e;
-            --text: #f8f9fa;
-            --card-bg: #16213e;
-            --sidebar-bg: #0f3460;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --pixel-border: 4px solid #4ecdc4;
-            --modal-bg: #0f3460;
+            --highlight: #ff9e9e;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s ease;
         }
 
         body {
@@ -48,6 +39,9 @@
             overflow-x: hidden;
             padding: 0;
             margin: 0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 214, 102, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 20%);
         }
 
         /* 加载动画 */
@@ -84,6 +78,7 @@
             height: 16px;
             background: var(--primary);
             animation: load-anim 1.5s infinite;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         @keyframes load-anim {
@@ -105,6 +100,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -112,6 +108,11 @@
             font-size: 1.5rem;
             color: white;
             text-shadow: 3px 3px 0 #000;
+            transition: transform 0.2s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .search-container {
@@ -127,21 +128,15 @@
             border: var(--pixel-border);
             border-radius: 0;
             font-size: 1rem;
-            background: var(--light);
+            background: var(--input-bg);
             color: var(--text);
+            box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
         }
 
-        .theme-toggle {
-            background: var(--accent);
-            border: var(--pixel-border);
-            padding: 10px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.1s;
-        }
-
-        .theme-toggle:active {
-            transform: translateY(4px);
+        .search-box:focus {
+            outline: none;
+            box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 107, 107, 0.3);
         }
 
         /* 筛选和排序栏 */
@@ -153,6 +148,7 @@
             background: var(--card-bg);
             border-bottom: var(--pixel-border);
             margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .filter-group {
@@ -164,14 +160,23 @@
         .filter-label {
             font-weight: bold;
             white-space: nowrap;
+            color: var(--text);
+            font-size: 0.9rem;
         }
 
         select.filter-select {
             padding: 8px 12px;
             border: var(--pixel-border);
-            background: var(--light);
+            background: var(--input-bg);
             color: var(--text);
             cursor: pointer;
+            box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        select.filter-select:focus {
+            outline: none;
+            box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 107, 107, 0.3);
         }
 
         /* 主布局 */
@@ -189,6 +194,7 @@
             height: 100%;
             position: sticky;
             top: 70px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
         }
 
         .sidebar-title {
@@ -200,6 +206,19 @@
             padding: 10px;
             border: var(--pixel-border);
             background: var(--accent);
+            box-shadow: 4px 4px 0 #000;
+            position: relative;
+        }
+
+        .sidebar-title::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 4px;
+            right: -4px;
+            height: 4px;
+            background: var(--highlight);
+            z-index: -1;
         }
 
         .category-list {
@@ -212,15 +231,34 @@
             background: var(--card-bg);
             border: var(--pixel-border);
             cursor: pointer;
-            transition: transform 0.1s;
+            transition: transform 0.1s, box-shadow 0.1s;
             display: flex;
             align-items: center;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .category-item:hover::before {
+            left: 100%;
         }
 
         .category-item:hover {
             transform: translateX(5px);
             background: var(--secondary);
             color: #000;
+            box-shadow: 4px 4px 0 #000;
         }
 
         .category-item i {
@@ -231,6 +269,7 @@
         .category-item.active {
             background: var(--primary);
             color: white;
+            box-shadow: 4px 4px 0 #000;
         }
 
         /* 主内容区 */
@@ -246,6 +285,18 @@
             color: var(--primary);
             padding-bottom: 10px;
             border-bottom: var(--pixel-border);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--highlight);
         }
 
         /* 插件卡片 */
@@ -265,9 +316,26 @@
             cursor: pointer;
         }
 
+        .plugin-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
         .plugin-card:hover {
             transform: translateY(-5px);
             box-shadow: 8px 8px 0 var(--shadow);
+        }
+
+        .plugin-card:hover::before {
+            transform: scaleX(1);
         }
 
         .plugin-header {
@@ -281,16 +349,19 @@
             font-size: 1.3rem;
             font-weight: bold;
             color: var(--primary);
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
         }
 
         .plugin-author {
             font-size: 0.9rem;
             color: var(--secondary);
+            font-weight: 500;
         }
 
         .plugin-description {
             margin-bottom: 15px;
             line-height: 1.5;
+            color: #555;
         }
 
         .plugin-meta {
@@ -304,6 +375,9 @@
             background: var(--accent);
             padding: 3px 8px;
             border: 2px solid #000;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 #000;
         }
 
         .plugin-stats {
@@ -315,6 +389,7 @@
             display: flex;
             align-items: center;
             gap: 3px;
+            font-weight: 500;
         }
 
         .plugin-tags {
@@ -329,6 +404,38 @@
             padding: 3px 8px;
             border: 2px solid #000;
             font-size: 0.8rem;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 2px 2px 0 #000;
+        }
+
+        /* 付费标识 */
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border: 2px solid #000;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            box-shadow: 2px 2px 0 #000;
+        }
+
+        .payment-paid {
+            background-color: #ff6b6b;
+            color: #000;
+        }
+
+        .payment-free {
+            background-color: #06d6a0;
+            color: #000;
+        }
+
+        .payment-freemium {
+            background-color: #ffd166;
+            color: #000;
         }
 
         .download-btn {
@@ -342,11 +449,20 @@
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 4px 4px 0 #000;
+            position: relative;
         }
 
         .download-btn:hover {
             background: var(--danger);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .download-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
         }
 
         /* 涂鸦元素 */
@@ -384,6 +500,9 @@
             border: var(--pixel-border);
             cursor: pointer;
             font-weight: bold;
+            color: var(--text);
+            box-shadow: 2px 2px 0 #000;
+            transition: all 0.1s;
         }
 
         .page-btn.active {
@@ -393,6 +512,14 @@
 
         .page-btn:hover:not(.active) {
             background: var(--secondary);
+            color: #000;
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .page-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0 0 0 #000;
         }
 
         /* 模态框 */
@@ -418,6 +545,7 @@
             position: relative;
             padding: 30px;
             animation: modal-appear 0.3s ease;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
         }
 
         @keyframes modal-appear {
@@ -432,23 +560,42 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text);
+            transition: transform 0.2s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--danger);
         }
 
         .modal-header {
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .modal-header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--highlight);
         }
 
         .modal-title {
             font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 5px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
         }
 
         .modal-author {
             font-size: 1.1rem;
             color: var(--secondary);
+            font-weight: 500;
         }
 
         .modal-body {
@@ -467,11 +614,23 @@
             color: var(--primary);
             border-bottom: 1px solid var(--secondary);
             padding-bottom: 5px;
+            position: relative;
+        }
+
+        .modal-section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--highlight);
         }
 
         .modal-description {
             line-height: 1.6;
             margin-bottom: 20px;
+            color: #555;
         }
 
         .modal-stats {
@@ -488,6 +647,7 @@
             padding: 10px;
             background: var(--card-bg);
             border: var(--pixel-border);
+            box-shadow: 2px 2px 0 #000;
         }
 
         .stat-value {
@@ -498,6 +658,7 @@
 
         .stat-label {
             font-size: 0.9rem;
+            color: var(--text);
         }
 
         .modal-dependencies {
@@ -516,6 +677,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: var(--text);
+            box-shadow: 2px 2px 0 #000;
         }
 
         .dependency-item i {
@@ -537,6 +700,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.1s;
+            box-shadow: 4px 4px 0 #000;
         }
 
         .modal-download {
@@ -544,8 +709,19 @@
             color: white;
         }
 
+        .modal-download:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
         .modal-close {
             background: var(--accent);
+            color: #000;
+        }
+
+        .modal-close:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
         }
 
         /* 响应式设计 */
@@ -566,13 +742,13 @@
             .main-container {
                 flex-direction: column;
             }
-            
+
             .sidebar {
                 width: 100%;
                 position: relative;
                 top: 0;
             }
-            
+
             .plugins-grid {
                 grid-template-columns: 1fr;
             }
@@ -619,727 +795,810 @@
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
+
+        /* 装饰性元素 */
+        .pixel-corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+        }
+
+        .corner-tl {
+            top: 0;
+            left: 0;
+            border-top: 4px solid var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .corner-tr {
+            top: 0;
+            right: 0;
+            border-top: 4px solid var(--primary);
+            border-right: 4px solid var(--primary);
+        }
+
+        .corner-bl {
+            bottom: 0;
+            left: 0;
+            border-bottom: 4px solid var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .corner-br {
+            bottom: 0;
+            right: 0;
+            border-bottom: 4px solid var(--primary);
+            border-right: 4px solid var(--primary);
+        }
     </style>
 </head>
 <body>
-    <!-- 加载动画 -->
-    <div id="loader">
-        <div class="loader-content">
-            <div class="pixel-loader"></div>
-            <p>加载Minecraft插件库...</p>
-        </div>
+<!-- 加载动画 -->
+<div id="loader">
+    <div class="loader-content">
+        <div class="pixel-loader"></div>
+        <p>加载Minecraft插件库...</p>
+    </div>
+</div>
+
+<!-- 导航栏 -->
+<div class="navbar">
+    <div class="logo">MC插件中心</div>
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="搜索插件...">
+    </div>
+    <!-- 已移除主题切换按钮 -->
+</div>
+
+<!-- 筛选和排序栏 -->
+<div class="filter-bar">
+    <div class="filter-group">
+        <span class="filter-label">版本:</span>
+        <select class="filter-select" id="versionFilter">
+            <option value="all">所有版本</option>
+            <option value="1.20">1.20.x</option>
+            <option value="1.19">1.19.x</option>
+            <option value="1.18">1.18.x</option>
+            <option value="1.17">1.17.x</option>
+            <option value="1.16">1.16.x</option>
+        </select>
     </div>
 
-    <!-- 导航栏 -->
-    <div class="navbar">
-        <div class="logo">MC插件中心</div>
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="搜索插件...">
-        </div>
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i> 暗色模式
-        </button>
+    <div class="filter-group">
+        <span class="filter-label">排序:</span>
+        <select class="filter-select" id="sortFilter">
+            <option value="popular">受欢迎程度</option>
+            <option value="newest">最新发布</option>
+            <option value="downloads">下载量</option>
+            <option value="rating">评分</option>
+        </select>
     </div>
 
-    <!-- 筛选和排序栏 -->
-    <div class="filter-bar">
-        <div class="filter-group">
-            <span class="filter-label">版本:</span>
-            <select class="filter-select" id="versionFilter">
-                <option value="all">所有版本</option>
-                <option value="1.20">1.20.x</option>
-                <option value="1.19">1.19.x</option>
-                <option value="1.18">1.18.x</option>
-                <option value="1.17">1.17.x</option>
-                <option value="1.16">1.16.x</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <span class="filter-label">排序:</span>
-            <select class="filter-select" id="sortFilter">
-                <option value="popular">受欢迎程度</option>
-                <option value="newest">最新发布</option>
-                <option value="downloads">下载量</option>
-                <option value="rating">评分</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <span class="filter-label">每页显示:</span>
-            <select class="filter-select" id="pageSizeFilter">
-                <option value="6">6个插件</option>
-                <option value="12">12个插件</option>
-                <option value="18">18个插件</option>
-            </select>
-        </div>
+    <div class="filter-group">
+        <span class="filter-label">每页显示:</span>
+        <select class="filter-select" id="pageSizeFilter">
+            <option value="6">6个插件</option>
+            <option value="12">12个插件</option>
+            <option value="18">18个插件</option>
+        </select>
+    </div>
+</div>
+
+<!-- 主布局 -->
+<div class="main-container">
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <div class="sidebar-title">分区导航</div>
+        <ul class="category-list">
+            <li class="category-item active" data-category="discover">
+                <i class="fas fa-compass"></i> 发现
+            </li>
+            <li class="category-item" data-category="economy">
+                <i class="fas fa-coins"></i> 经济系统
+            </li>
+            <li class="category-item" data-category="protection">
+                <i class="fas fa-shield-alt"></i> 领地保护
+            </li>
+            <li class="category-item" data-category="admin">
+                <i class="fas fa-tools"></i> 管理工具
+            </li>
+            <li class="category-item" data-category="gameplay">
+                <i class="fas fa-gamepad"></i> 游戏玩法
+            </li>
+            <li class="category-item" data-category="rpg">
+                <i class="fas fa-dragon"></i> RPG相关
+            </li>
+            <li class="category-item" data-category="world">
+                <i class="fas fa-globe"></i> 世界生成
+            </li>
+            <li class="category-item" data-category="decoration">
+                <i class="fas fa-paint-brush"></i> 装饰美化
+            </li>
+            <li class="category-item" data-category="utility">
+                <i class="fas fa-wrench"></i> 实用工具
+            </li>
+            <li class="category-item" data-category="api">
+                <i class="fas fa-code"></i> 库与API
+            </li>
+        </ul>
     </div>
 
-    <!-- 主布局 -->
-    <div class="main-container">
-        <!-- 侧边栏 -->
-        <div class="sidebar">
-            <div class="sidebar-title">分区导航</div>
-            <ul class="category-list">
-                <li class="category-item active" data-category="discover">
-                    <i class="fas fa-compass"></i> 发现
-                </li>
-                <li class="category-item" data-category="economy">
-                    <i class="fas fa-coins"></i> 经济系统
-                </li>
-                <li class="category-item" data-category="protection">
-                    <i class="fas fa-shield-alt"></i> 领地保护
-                </li>
-                <li class="category-item" data-category="admin">
-                    <i class="fas fa-tools"></i> 管理工具
-                </li>
-                <li class="category-item" data-category="gameplay">
-                    <i class="fas fa-gamepad"></i> 游戏玩法
-                </li>
-                <li class="category-item" data-category="rpg">
-                    <i class="fas fa-dragon"></i> RPG相关
-                </li>
-                <li class="category-item" data-category="world">
-                    <i class="fas fa-globe"></i> 世界生成
-                </li>
-                <li class="category-item" data-category="decoration">
-                    <i class="fas fa-paint-brush"></i> 装饰美化
-                </li>
-                <li class="category-item" data-category="utility">
-                    <i class="fas fa-wrench"></i> 实用工具
-                </li>
-                <li class="category-item" data-category="api">
-                    <i class="fas fa-code"></i> 库与API
-                </li>
-            </ul>
-        </div>
+    <!-- 主内容区 -->
+    <div class="content">
+        <!-- 发现区域 -->
+        <div class="discover-section">
+            <h2 class="section-title">发现精彩插件</h2>
+            <div class="plugins-grid" id="plugins-container">
+                <!-- 插件卡片将通过JS动态生成 -->
+            </div>
 
-        <!-- 主内容区 -->
-        <div class="content">
-            <!-- 发现区域 -->
-            <div class="discover-section">
-                <h2 class="section-title">发现精彩插件</h2>
-                <div class="plugins-grid" id="plugins-container">
-                    <!-- 插件卡片将通过JS动态生成 -->
-                </div>
-                
-                <!-- 分页控件 -->
-                <div class="pagination" id="pagination">
-                    <!-- 分页按钮将通过JS动态生成 -->
-                </div>
+            <!-- 分页控件 -->
+            <div class="pagination" id="pagination">
+                <!-- 分页按钮将通过JS动态生成 -->
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 插件详情模态框 -->
-    <div class="modal" id="pluginModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle">插件名称</h2>
-                <div class="modal-author" id="modalAuthor">作者: 未知</div>
-            </div>
-            
-            <div class="modal-body">
-                <div class="modal-left">
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">描述</h3>
-                        <p class="modal-description" id="modalDescription">插件描述加载中...</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">详细信息</h3>
-                        <div class="modal-stats">
-                            <div class="modal-stat">
-                                <span class="stat-value" id="modalDownloads">0</span>
-                                <span class="stat-label">下载量</span>
-                            </div>
-                            <div class="modal-stat">
-                                <span class="stat-value" id="modalRating">0.0</span>
-                                <span class="stat-label">评分</span>
-                            </div>
-                            <div class="modal-stat">
-                                <span class="stat-value" id="modalReviews">0</span>
-                                <span class="stat-label">评论数</span>
-                            </div>
-                            <div class="modal-stat">
-                                <span class="stat-value" id="modalVersion">1.0</span>
-                                <span class="stat-label">支持版本</span>
-                            </div>
+<!-- 插件详情模态框 -->
+<div class="modal" id="pluginModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+
+        <!-- 装饰性角标 -->
+        <div class="pixel-corner corner-tl"></div>
+        <div class="pixel-corner corner-tr"></div>
+        <div class="pixel-corner corner-bl"></div>
+        <div class="pixel-corner corner-br"></div>
+
+        <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle">插件名称</h2>
+            <div class="modal-author" id="modalAuthor">作者: 未知</div>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-left">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">描述</h3>
+                    <p class="modal-description" id="modalDescription">插件描述加载中...</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">详细信息</h3>
+                    <div class="modal-stats">
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalDownloads">0</span>
+                            <span class="stat-label">下载量</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalRating">0.0</span>
+                            <span class="stat-label">评分</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalReviews">0</span>
+                            <span class="stat-label">评论数</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalVersion">1.0</span>
+                            <span class="stat-label">支持版本</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalPaymentType">免费</span>
+                            <span class="stat-label">付费类型</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="modal-right">
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">依赖关系</h3>
-                        <div class="modal-dependencies">
-                            <ul class="dependency-list" id="modalDependencies">
-                                <!-- 依赖项将通过JS动态生成 -->
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">标签</h3>
-                        <div class="plugin-tags" id="modalTags">
-                            <!-- 标签将通过JS动态生成 -->
-                        </div>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">最后更新</h3>
-                        <p id="modalUpdated">未知</p>
+            </div>
+
+            <div class="modal-right">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">依赖关系</h3>
+                    <div class="modal-dependencies">
+                        <ul class="dependency-list" id="modalDependencies">
+                            <!-- 依赖项将通过JS动态生成 -->
+                        </ul>
                     </div>
                 </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button class="modal-btn modal-close" id="modalCloseBtn">
-                    <i class="fas fa-times"></i> 关闭
-                </button>
-                <a href="#" class="modal-btn modal-download" id="modalDownloadBtn" target="_blank">
-                    <i class="fas fa-download"></i> 下载插件
-                </a>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">标签</h3>
+                    <div class="plugin-tags" id="modalTags">
+                        <!-- 标签将通过JS动态生成 -->
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">最后更新</h3>
+                    <p id="modalUpdated">未知</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // 扩展插件数据库
-        const pluginsData = [
-            {
-                id: 1,
-                name: "EssentialsX",
-                author: "drtshock",
-                description: "提供服务器基础功能，包括传送、家园、经济等基础功能，是大多数服务器必备的核心插件。",
-                version: "1.8-1.21",
-                tags: ["基础功能", "经济", "传送", "管理"],
-                category: ["admin", "economy"],
-                downloads: 5579837,
-                rating: 4.8,
-                reviews: 5420,
-                lastUpdated: "2025-08-04",
-                dependencies: ["Vault"],
-                link: "https://www.spigotmc.org/resources/essentialsx.9089/"
-            },
-            {
-                id: 2,
-                name: "WorldEdit",
-                author: "sk89q",
-                description: "强大的世界编辑工具，允许快速修改和建造大型结构，是建筑服务器的必备工具。",
-                version: "1.12-1.21",
-                tags: ["建筑", "地形", "编辑", "管理"],
-                category: ["world", "admin"],
-                downloads: 23531395,
-                rating: 4.9,
-                reviews: 3820,
-                lastUpdated: "2025-07-19",
-                dependencies: [],
-                link: "https://dev.bukkit.org/projects/worldedit"
-            },
-            {
-                id: 3,
-                name: "Vault",
-                author: "MilkBowl",
-                description: "经济系统兼容插件，为不同经济插件提供统一API接口，是经济系统的核心依赖。",
-                version: "1.13-1.21",
-                tags: ["经济", "API", "兼容"],
-                category: ["economy", "api"],
-                downloads: 3188890,
-                rating: 4.7,
-                reviews: 2950,
-                lastUpdated: "2025-07-18",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/vault.34315/"
-            },
-            {
-                id: 4,
-                name: "Citizens",
-                author: "fullwall",
-                description: "NPC创建和管理插件，可以创建自定义NPC并赋予其各种行为，适合RPG服务器。",
-                version: "1.14-1.21",
-                tags: ["NPC", "角色", "任务", "RPG"],
-                category: ["rpg", "gameplay"],
-                downloads: 27213,
-                rating: 4.0,
-                reviews: 2780,
-                lastUpdated: "2025-08-12",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/citizens.13811/"
-            },
-            {
-                id: 5,
-                name: "WorldGuard",
-                author: "sk89q",
-                description: "区域保护插件，可以定义区域并设置各种保护标志，防止玩家破坏或建造。",
-                version: "1.8-1.21",
-                tags: ["保护", "领地", "管理"],
-                category: ["protection", "admin"],
-                downloads: 9455418,
-                rating: 4.8,
-                reviews: 3420,
-                lastUpdated: "2025-07-12",
-                dependencies: ["WorldEdit"],
-                link: "https://dev.bukkit.org/projects/worldguard"
-            },
-            {
-                id: 6,
-                name: "McMMO",
-                author: "nossr50",
-                description: "RPG技能系统，玩家可以通过各种活动提升技能等级，获得特殊能力和奖励。",
-                version: "1.17-1.21",
-                tags: ["RPG", "技能", "等级", "游戏玩法"],
-                category: ["rpg", "gameplay"],
-                downloads: 6800000,
-                rating: 4.5,
-                reviews: 4120,
-                lastUpdated: "2025-08-04",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/mcmmo.24461/"
-            },
-            {
-                id: 7,
-                name: "LuckPerms",
-                author: "Luck",
-                description: "权限管理插件，提供强大的权限组和权限设置功能，支持多种数据库后端。",
-                version: "1.7-1.21",
-                tags: ["权限", "管理", "安全"],
-                category: ["admin", "utility"],
-                downloads: 7620099,
-                rating: 4.9,
-                reviews: 3250,
-                lastUpdated: "2025-05-26",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/luckperms.28140/"
-            },
-            {
-                id: 8,
-                name: "ItemsAdder",
-                author: "LoneDev",
-                description: "自定义物品和资源包插件，可以创建自定义方块、物品和模型，无需修改客户端。",
-                version: "1.16-1.21",
-                tags: ["自定义", "物品", "资源包", "装饰"],
-                category: ["decoration", "gameplay"],
-                downloads: 15549,
-                rating: 4.8,
-                reviews: 1850,
-                lastUpdated: "2025-07-22",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/itemsadder.73355/"
-            },
-            {
-                id: 9,
-                name: "PlaceholderAPI",
-                author: "ExtendedClip",
-                description: "占位符API，允许其他插件创建和使用占位符，极大增强插件之间的兼容性。",
-                version: "1.8-1.21",
-                tags: ["API", "兼容", "实用工具"],
-                category: ["api", "utility"],
-                downloads: 1923403,
-                rating: 4.7,
-                reviews: 2450,
-                lastUpdated: "2024-05-21",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/placeholderapi.6245/"
-            },
-            {
-                id: 10,
-                name: "ProtocolLib",
-                author: "dmulloy2",
-                description: "允许修改Minecraft协议的低级库，许多高级插件依赖此库实现复杂功能。",
-                version: "1.8-1.21",
-                tags: ["库", "协议", "开发"],
-                category: ["api", "utility"],
-                downloads: 2929030,
-                rating: 4.6,
-                reviews: 1620,
-                lastUpdated: "2025-08-09",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/protocollib.1997/"
-            },
-            {
-                id: 11,
-                name: "Holographic Displays",
-                author: "filoghost",
-                description: "创建全息文字和图像的插件，适合用于信息显示、商店招牌或装饰用途。",
-                version: "1.8-1.20",
-                tags: ["全息", "显示", "装饰"],
-                category: ["decoration", "utility"],
-                downloads: 75097,
-                rating: 4.4,
-                reviews: 1780,
-                lastUpdated: "2024-01-27",
-                dependencies: [],
-                link: "https://dev.bukkit.org/projects/holographic-displays"
-            },
-            {
-                id: 12,
-                name: "AdvancedEnchantments",
-                author: "YouHaveTrouble",
-                description: "添加多种自定义附魔效果，增强游戏战斗和工具系统，完全可配置。",
-                version: "1.16-1.20",
-                tags: ["附魔", "战斗", "游戏玩法"],
-                category: ["gameplay", "rpg"],
-                downloads: 30378,
-                rating: 4.3,
-                reviews: 1250,
-                lastUpdated: "2025-08-25",
-                dependencies: [],
-                link: "https://www.spigotmc.org/resources/advancedenchantments.86927/"
+        <div class="modal-footer">
+            <button class="modal-btn modal-close" id="modalCloseBtn">
+                <i class="fas fa-times"></i> 关闭
+            </button>
+            <a href="#" class="modal-btn modal-download" id="modalDownloadBtn" target="_blank">
+                <i class="fas fa-download"></i> 下载插件
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 扩展插件数据库
+    const pluginsData = [
+        {
+            id: 1,
+            name: "EssentialsX",
+            author: "drtshock",
+            description: "提供服务器基础功能，包括传送、家园、经济等基础功能，是大多数服务器必备的核心插件。",
+            version: "1.8-1.21",
+            tags: ["基础功能", "经济", "传送", "管理"],
+            category: ["admin", "economy"],
+            downloads: 5579837,
+            rating: 4.8,
+            reviews: 5420,
+            lastUpdated: "2025-08-04",
+            dependencies: ["Vault"],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/essentialsx.9089/"
+        },
+        {
+            id: 2,
+            name: "WorldEdit",
+            author: "sk89q",
+            description: "强大的世界编辑工具，允许快速修改和建造大型结构，是建筑服务器的必备工具。",
+            version: "1.12-1.21",
+            tags: ["建筑", "地形", "编辑", "管理"],
+            category: ["world", "admin"],
+            downloads: 23531395,
+            rating: 4.9,
+            reviews: 3820,
+            lastUpdated: "2025-07-19",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://dev.bukkit.org/projects/worldedit"
+        },
+        {
+            id: 3,
+            name: "Vault",
+            author: "MilkBowl",
+            description: "经济系统兼容插件，为不同经济插件提供统一API接口，是经济系统的核心依赖。",
+            version: "1.13-1.21",
+            tags: ["经济", "API", "兼容"],
+            category: ["economy", "api"],
+            downloads: 3188890,
+            rating: 4.7,
+            reviews: 2950,
+            lastUpdated: "2025-07-18",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/vault.34315/"
+        },
+        {
+            id: 4,
+            name: "Citizens",
+            author: "fullwall",
+            description: "NPC创建和管理插件，可以创建自定义NPC并赋予其各种行为，适合RPG服务器。",
+            version: "1.14-1.21",
+            tags: ["NPC", "角色", "任务", "RPG"],
+            category: ["rpg", "gameplay"],
+            downloads: 27213,
+            rating: 4.0,
+            reviews: 2780,
+            lastUpdated: "2025-08-12",
+            dependencies: [],
+            paymentType: "freemium",
+            link: "https://www.spigotmc.org/resources/citizens.13811/"
+        },
+        {
+            id: 5,
+            name: "WorldGuard",
+            author: "sk89q",
+            description: "区域保护插件，可以定义区域并设置各种保护标志，防止玩家破坏或建造。",
+            version: "1.8-1.21",
+            tags: ["保护", "领地", "管理"],
+            category: ["protection", "admin"],
+            downloads: 9455418,
+            rating: 4.8,
+            reviews: 3420,
+            lastUpdated: "2025-07-12",
+            dependencies: ["WorldEdit"],
+            paymentType: "free",
+            link: "https://dev.bukkit.org/projects/worldguard"
+        },
+        {
+            id: 6,
+            name: "McMMO",
+            author: "nossr50",
+            description: "RPG技能系统，玩家可以通过各种活动提升技能等级，获得特殊能力和奖励。",
+            version: "1.17-1.21",
+            tags: ["RPG", "技能", "等级", "游戏玩法"],
+            category: ["rpg", "gameplay"],
+            downloads: 6800000,
+            rating: 4.5,
+            reviews: 4120,
+            lastUpdated: "2025-08-04",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/mcmmo.24461/"
+        },
+        {
+            id: 7,
+            name: "LuckPerms",
+            author: "Luck",
+            description: "权限管理插件，提供强大的权限组和权限设置功能，支持多种数据库后端。",
+            version: "1.7-1.21",
+            tags: ["权限", "管理", "安全"],
+            category: ["admin", "utility"],
+            downloads: 7620099,
+            rating: 4.9,
+            reviews: 3250,
+            lastUpdated: "2025-05-26",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/luckperms.28140/"
+        },
+        {
+            id: 8,
+            name: "ItemsAdder",
+            author: "LoneDev",
+            description: "自定义物品和资源包插件，可以创建自定义方块、物品和模型，无需修改客户端。",
+            version: "1.16-1.21",
+            tags: ["自定义", "物品", "资源包", "装饰"],
+            category: ["decoration", "gameplay"],
+            downloads: 15549,
+            rating: 4.8,
+            reviews: 1850,
+            lastUpdated: "2025-07-22",
+            dependencies: [],
+            paymentType: "paid",
+            link: "https://www.spigotmc.org/resources/itemsadder.73355/"
+        },
+        {
+            id: 9,
+            name: "PlaceholderAPI",
+            author: "ExtendedClip",
+            description: "占位符API，允许其他插件创建和使用占位符，极大增强插件之间的兼容性。",
+            version: "1.8-1.21",
+            tags: ["API", "兼容", "实用工具"],
+            category: ["api", "utility"],
+            downloads: 1923403,
+            rating: 4.7,
+            reviews: 2450,
+            lastUpdated: "2024-05-21",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/placeholderapi.6245/"
+        },
+        {
+            id: 10,
+            name: "ProtocolLib",
+            author: "dmulloy2",
+            description: "允许修改Minecraft协议的低级库，许多高级插件依赖此库实现复杂功能。",
+            version: "1.8-1.21",
+            tags: ["库", "协议", "开发"],
+            category: ["api", "utility"],
+            downloads: 2929030,
+            rating: 4.6,
+            reviews: 1620,
+            lastUpdated: "2025-08-09",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://www.spigotmc.org/resources/protocollib.1997/"
+        },
+        {
+            id: 11,
+            name: "Holographic Displays",
+            author: "filoghost",
+            description: "创建全息文字和图像的插件，适合用于信息显示、商店招牌或装饰用途。",
+            version: "1.8-1.20",
+            tags: ["全息", "显示", "装饰"],
+            category: ["decoration", "utility"],
+            downloads: 75097,
+            rating: 4.4,
+            reviews: 1780,
+            lastUpdated: "2024-01-27",
+            dependencies: [],
+            paymentType: "free",
+            link: "https://dev.bukkit.org/projects/holographic-displays"
+        },
+        {
+            id: 12,
+            name: "AdvancedEnchantments",
+            author: "YouHaveTrouble",
+            description: "添加多种自定义附魔效果，增强游戏战斗和工具系统，完全可配置。",
+            version: "1.16-1.21",
+            tags: ["附魔", "战斗", "游戏玩法"],
+            category: ["gameplay", "rpg"],
+            downloads: 30378,
+            rating: 4.3,
+            reviews: 1250,
+            lastUpdated: "2025-08-25",
+            dependencies: [],
+            paymentType: "paid",
+            link: "https://www.spigotmc.org/resources/advancedenchantments.86927/"
+        }
+    ];
+
+    // 全局变量
+    let currentPage = 1;
+    let pageSize = 6;
+    let currentCategory = 'discover';
+    let currentVersion = 'all';
+    let currentSort = 'popular';
+    let filteredPlugins = [];
+
+    // DOM加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        // 隐藏加载动画
+        setTimeout(() => {
+            document.getElementById('loader').style.opacity = '0';
+            document.getElementById('loader').style.visibility = 'hidden';
+        }, 1500);
+
+        // 初始化插件显示
+        filteredPlugins = [...pluginsData];
+        renderPlugins();
+        setupPagination();
+
+        // 分类筛选功能
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有active类
+                categoryItems.forEach(i => i.classList.remove('active'));
+                // 为当前项添加active类
+                this.classList.add('active');
+
+                currentCategory = this.getAttribute('data-category');
+                currentPage = 1;
+                filterPlugins();
+            });
+        });
+
+        // 搜索功能
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', function() {
+            currentPage = 1;
+            filterPlugins();
+        });
+
+        // 版本筛选
+        const versionFilter = document.getElementById('versionFilter');
+        versionFilter.addEventListener('change', function() {
+            currentVersion = this.value;
+            currentPage = 1;
+            filterPlugins();
+        });
+
+        // 排序筛选
+        const sortFilter = document.getElementById('sortFilter');
+        sortFilter.addEventListener('change', function() {
+            currentSort = this.value;
+            currentPage = 1;
+            filterPlugins();
+        });
+
+        // 每页显示数量
+        const pageSizeFilter = document.getElementById('pageSizeFilter');
+        pageSizeFilter.addEventListener('change', function() {
+            pageSize = parseInt(this.value);
+            currentPage = 1;
+            filterPlugins();
+        });
+
+        // 模态框功能
+        const modal = document.getElementById('pluginModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modalCloseBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
-        ];
+        });
+    });
 
-        // 全局变量
-        let currentPage = 1;
-        let pageSize = 6;
-        let currentCategory = 'discover';
-        let currentVersion = 'all';
-        let currentSort = 'popular';
-        let filteredPlugins = [];
+    // 筛选插件函数
+    function filterPlugins() {
+        const searchTerm = document.querySelector('.search-box').value.toLowerCase();
 
-        // DOM加载完成后执行
-        document.addEventListener('DOMContentLoaded', function() {
-            // 隐藏加载动画
-            setTimeout(() => {
-                document.getElementById('loader').style.opacity = '0';
-                document.getElementById('loader').style.visibility = 'hidden';
-            }, 1500);
-
-            // 初始化插件显示
+        // 首先根据分类筛选
+        if (currentCategory === 'discover') {
             filteredPlugins = [...pluginsData];
-            renderPlugins();
-            setupPagination();
+        } else {
+            filteredPlugins = pluginsData.filter(plugin =>
+                plugin.category.includes(currentCategory)
+            );
+        }
 
-            // 主题切换功能
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) {
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i> 亮色模式';
-                } else {
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i> 暗色模式';
-                }
-            });
+        // 然后根据版本筛选
+        if (currentVersion !== 'all') {
+            filteredPlugins = filteredPlugins.filter(plugin =>
+                plugin.version.includes(currentVersion)
+            );
+        }
 
-            // 分类筛选功能
-            const categoryItems = document.querySelectorAll('.category-item');
-            categoryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // 移除所有active类
-                    categoryItems.forEach(i => i.classList.remove('active'));
-                    // 为当前项添加active类
-                    this.classList.add('active');
-                    
-                    currentCategory = this.getAttribute('data-category');
-                    currentPage = 1;
-                    filterPlugins();
+        // 然后根据搜索词筛选
+        if (searchTerm.length >= 2) {
+            filteredPlugins = filteredPlugins.filter(plugin =>
+                plugin.name.toLowerCase().includes(searchTerm) ||
+                plugin.description.toLowerCase().includes(searchTerm) ||
+                plugin.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+        }
+
+        // 最后排序
+        switch(currentSort) {
+            case 'newest':
+                filteredPlugins.sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
+                break;
+            case 'downloads':
+                filteredPlugins.sort((a, b) => b.downloads - a.downloads);
+                break;
+            case 'rating':
+                filteredPlugins.sort((a, b) => b.rating - a.rating);
+                break;
+            case 'popular':
+            default:
+                // 综合评分和下载量
+                filteredPlugins.sort((a, b) => {
+                    const aScore = a.rating * Math.log(a.downloads);
+                    const bScore = b.rating * Math.log(b.downloads);
+                    return bScore - aScore;
                 });
-            });
+                break;
+        }
 
-            // 搜索功能
-            const searchBox = document.querySelector('.search-box');
-            searchBox.addEventListener('input', function() {
-                currentPage = 1;
-                filterPlugins();
-            });
+        // 重新渲染插件和分页
+        renderPlugins();
+        setupPagination();
+    }
 
-            // 版本筛选
-            const versionFilter = document.getElementById('versionFilter');
-            versionFilter.addEventListener('change', function() {
-                currentVersion = this.value;
-                currentPage = 1;
-                filterPlugins();
-            });
+    // 渲染插件卡片函数
+    function renderPlugins() {
+        const container = document.getElementById('plugins-container');
+        container.innerHTML = '';
 
-            // 排序筛选
-            const sortFilter = document.getElementById('sortFilter');
-            sortFilter.addEventListener('change', function() {
-                currentSort = this.value;
-                currentPage = 1;
-                filterPlugins();
-            });
+        if (filteredPlugins.length === 0) {
+            container.innerHTML = '<p class="no-plugins">没有找到符合条件的插件</p>';
+            document.getElementById('pagination').innerHTML = '';
+            return;
+        }
 
-            // 每页显示数量
-            const pageSizeFilter = document.getElementById('pageSizeFilter');
-            pageSizeFilter.addEventListener('change', function() {
-                pageSize = parseInt(this.value);
-                currentPage = 1;
-                filterPlugins();
-            });
+        // 计算当前页要显示的插件
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, filteredPlugins.length);
+        const currentPlugins = filteredPlugins.slice(startIndex, endIndex);
 
-            // 模态框功能
-            const modal = document.getElementById('pluginModal');
-            const closeModal = document.getElementById('closeModal');
-            const modalCloseBtn = document.getElementById('modalCloseBtn');
+        currentPlugins.forEach(plugin => {
+            const card = document.createElement('div');
+            card.className = 'plugin-card fade-in';
+            card.setAttribute('data-id', plugin.id);
 
-            closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
+            // 添加涂鸦元素
+            const doodle1 = document.createElement('div');
+            doodle1.className = 'doodle doodle-1';
+            doodle1.innerHTML = '<i class="fas fa-cube"></i>';
 
-            modalCloseBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
+            const doodle2 = document.createElement('div');
+            doodle2.className = 'doodle doodle-2';
+            doodle2.innerHTML = '<i class="fas fa-dragon"></i>';
 
-            window.addEventListener('click', function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+            card.appendChild(doodle1);
+            card.appendChild(doodle2);
+
+            // 生成付费标识
+            let paymentBadge = '';
+            if (plugin.paymentType === 'paid') {
+                paymentBadge = '<span class="payment-badge payment-paid"><i class="fas fa-dollar-sign"></i> 付费</span>';
+            } else if (plugin.paymentType === 'freemium') {
+                paymentBadge = '<span class="payment-badge payment-freemium"><i class="fas fa-star-half-alt"></i> 免费版</span>';
+            } else {
+                paymentBadge = '<span class="payment-badge payment-free"><i class="fas fa-gift"></i> 免费</span>';
+            }
+
+            // 插件内容
+            card.innerHTML += `
+                <div class="plugin-header">
+                    <div class="plugin-name">${plugin.name}</div>
+                    <div class="plugin-author">作者: ${plugin.author}</div>
+                </div>
+                <div class="plugin-description">${plugin.description}</div>
+                <div class="plugin-meta">
+                    <div class="plugin-version">支持: ${plugin.version}</div>
+                    <div class="plugin-stats">
+                        <span class="stat"><i class="fas fa-download"></i> ${formatDownloads(plugin.downloads)}</span>
+                        <span class="stat"><i class="fas fa-star"></i> ${plugin.rating}</span>
+                    </div>
+                </div>
+                <div class="plugin-tags">
+                    ${paymentBadge}
+                    ${plugin.tags.map(tag => `<span class="plugin-tag">${tag}</span>`).join('')}
+                </div>
+                <div class="download-btn" data-id="${plugin.id}">
+                    <i class="fas fa-download"></i> 下载插件
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+
+        // 添加插件卡片点击事件
+        document.querySelectorAll('.plugin-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('download-btn')) {
+                    const pluginId = parseInt(this.getAttribute('data-id'));
+                    openPluginModal(pluginId);
                 }
             });
         });
 
-        // 筛选插件函数
-        function filterPlugins() {
-            const searchTerm = document.querySelector('.search-box').value.toLowerCase();
-            
-            // 首先根据分类筛选
-            if (currentCategory === 'discover') {
-                filteredPlugins = [...pluginsData];
-            } else {
-                filteredPlugins = pluginsData.filter(plugin => 
-                    plugin.category.includes(currentCategory)
-                );
-            }
-            
-            // 然后根据版本筛选
-            if (currentVersion !== 'all') {
-                filteredPlugins = filteredPlugins.filter(plugin => 
-                    plugin.version.includes(currentVersion)
-                );
-            }
-            
-            // 然后根据搜索词筛选
-            if (searchTerm.length >= 2) {
-                filteredPlugins = filteredPlugins.filter(plugin => 
-                    plugin.name.toLowerCase().includes(searchTerm) || 
-                    plugin.description.toLowerCase().includes(searchTerm) ||
-                    plugin.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                );
-            }
-            
-            // 最后排序
-            switch(currentSort) {
-                case 'newest':
-                    filteredPlugins.sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
-                    break;
-                case 'downloads':
-                    filteredPlugins.sort((a, b) => b.downloads - a.downloads);
-                    break;
-                case 'rating':
-                    filteredPlugins.sort((a, b) => b.rating - a.rating);
-                    break;
-                case 'popular':
-                default:
-                    // 综合评分和下载量
-                    filteredPlugins.sort((a, b) => {
-                        const aScore = a.rating * Math.log(a.downloads);
-                        const bScore = b.rating * Math.log(b.downloads);
-                        return bScore - aScore;
-                    });
-                    break;
-            }
-            
-            // 重新渲染插件和分页
-            renderPlugins();
-            setupPagination();
-        }
-
-        // 渲染插件卡片函数
-        function renderPlugins() {
-            const container = document.getElementById('plugins-container');
-            container.innerHTML = '';
-            
-            if (filteredPlugins.length === 0) {
-                container.innerHTML = '<p class="no-plugins">没有找到符合条件的插件</p>';
-                document.getElementById('pagination').innerHTML = '';
-                return;
-            }
-            
-            // 计算当前页要显示的插件
-            const startIndex = (currentPage - 1) * pageSize;
-            const endIndex = Math.min(startIndex + pageSize, filteredPlugins.length);
-            const currentPlugins = filteredPlugins.slice(startIndex, endIndex);
-            
-            currentPlugins.forEach(plugin => {
-                const card = document.createElement('div');
-                card.className = 'plugin-card fade-in';
-                card.setAttribute('data-id', plugin.id);
-                
-                // 添加涂鸦元素
-                const doodle1 = document.createElement('div');
-                doodle1.className = 'doodle doodle-1';
-                doodle1.innerHTML = '<i class="fas fa-cube"></i>';
-                
-                const doodle2 = document.createElement('div');
-                doodle2.className = 'doodle doodle-2';
-                doodle2.innerHTML = '<i class="fas fa-dragon"></i>';
-                
-                card.appendChild(doodle1);
-                card.appendChild(doodle2);
-                
-                // 插件内容
-                card.innerHTML += `
-                    <div class="plugin-header">
-                        <div class="plugin-name">${plugin.name}</div>
-                        <div class="plugin-author">作者: ${plugin.author}</div>
-                    </div>
-                    <div class="plugin-description">${plugin.description}</div>
-                    <div class="plugin-meta">
-                        <div class="plugin-version">支持: ${plugin.version}</div>
-                        <div class="plugin-stats">
-                            <span class="stat"><i class="fas fa-download"></i> ${formatDownloads(plugin.downloads)}</span>
-                            <span class="stat"><i class="fas fa-star"></i> ${plugin.rating}</span>
-                        </div>
-                    </div>
-                    <div class="plugin-tags">
-                        ${plugin.tags.map(tag => `<span class="plugin-tag">${tag}</span>`).join('')}
-                    </div>
-                    <div class="download-btn" data-id="${plugin.id}">
-                        <i class="fas fa-download"></i> 下载插件
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
-            
-            // 添加插件卡片点击事件
-            document.querySelectorAll('.plugin-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('download-btn')) {
-                        const pluginId = parseInt(this.getAttribute('data-id'));
-                        openPluginModal(pluginId);
-                    }
-                });
-            });
-            
-            // 添加下载按钮点击事件
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const pluginId = parseInt(this.getAttribute('data-id'));
-                    const plugin = pluginsData.find(p => p.id === pluginId);
-                    if (plugin) {
-                        window.open(plugin.link, '_blank');
-                    }
-                });
-            });
-        }
-
-        // 设置分页功能
-        function setupPagination() {
-            const pagination = document.getElementById('pagination');
-            pagination.innerHTML = '';
-            
-            if (filteredPlugins.length === 0) {
-                return;
-            }
-            
-            const pageCount = Math.ceil(filteredPlugins.length / pageSize);
-            
-            // 添加上一页按钮
-            if (currentPage > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.innerHTML = '&laquo;';
-                prevBtn.addEventListener('click', function() {
-                    currentPage--;
-                    renderPlugins();
-                    setupPagination();
-                    window.scrollTo(0, 0);
-                });
-                pagination.appendChild(prevBtn);
-            }
-            
-            // 添加页码按钮
-            for (let i = 1; i <= pageCount; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = 'page-btn';
-                if (i === currentPage) {
-                    pageBtn.classList.add('active');
+        // 添加下载按钮点击事件
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const pluginId = parseInt(this.getAttribute('data-id'));
+                const plugin = pluginsData.find(p => p.id === pluginId);
+                if (plugin) {
+                    window.open(plugin.link, '_blank');
                 }
-                pageBtn.innerText = i;
-                pageBtn.addEventListener('click', function() {
-                    currentPage = i;
-                    renderPlugins();
-                    setupPagination();
-                    window.scrollTo(0, 0);
-                });
-                pagination.appendChild(pageBtn);
-            }
-            
-            // 添加下一页按钮
-            if (currentPage < pageCount) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.innerHTML = '&raquo;';
-                nextBtn.addEventListener('click', function() {
-                    currentPage++;
-                    renderPlugins();
-                    setupPagination();
-                    window.scrollTo(0, 0);
-                });
-                pagination.appendChild(nextBtn);
-            }
-        }
-
-        // 打开插件详情模态框
-        function openPluginModal(pluginId) {
-            const plugin = pluginsData.find(p => p.id === pluginId);
-            if (!plugin) return;
-            
-            // 填充模态框内容
-            document.getElementById('modalTitle').textContent = plugin.name;
-            document.getElementById('modalAuthor').textContent = `作者: ${plugin.author}`;
-            document.getElementById('modalDescription').textContent = plugin.description;
-            document.getElementById('modalDownloads').textContent = formatDownloads(plugin.downloads);
-            document.getElementById('modalRating').textContent = plugin.rating;
-            document.getElementById('modalReviews').textContent = formatDownloads(plugin.reviews);
-            document.getElementById('modalVersion').textContent = plugin.version;
-            document.getElementById('modalUpdated').textContent = plugin.lastUpdated;
-            document.getElementById('modalDownloadBtn').setAttribute('href', plugin.link);
-            
-            // 填充标签
-            const tagsContainer = document.getElementById('modalTags');
-            tagsContainer.innerHTML = '';
-            plugin.tags.forEach(tag => {
-                const tagEl = document.createElement('span');
-                tagEl.className = 'plugin-tag';
-                tagEl.textContent = tag;
-                tagsContainer.appendChild(tagEl);
             });
-            
-            // 填充依赖关系
-            const depsContainer = document.getElementById('modalDependencies');
-            depsContainer.innerHTML = '';
-            
-            if (plugin.dependencies && plugin.dependencies.length > 0) {
-                plugin.dependencies.forEach(dep => {
-                    const depEl = document.createElement('li');
-                    depEl.className = 'dependency-item';
-                    depEl.innerHTML = `<i class="fas fa-link"></i> ${dep}`;
-                    depsContainer.appendChild(depEl);
-                });
-            } else {
-                const noDepEl = document.createElement('li');
-                noDepEl.className = 'dependency-item';
-                noDepEl.innerHTML = '<i class="fas fa-check-circle"></i> 无依赖';
-                depsContainer.appendChild(noDepEl);
-            }
-            
-            // 显示模态框
-            document.getElementById('pluginModal').style.display = 'block';
+        });
+    }
+
+    // 设置分页功能
+    function setupPagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        if (filteredPlugins.length === 0) {
+            return;
         }
 
-        // 格式化下载量显示
-        function formatDownloads(num) {
-            if (num >= 1000000) {
-                return (num / 1000000).toFixed(1) + 'M';
-            } else if (num >= 1000) {
-                return (num / 1000).toFixed(1) + 'K';
-            }
-            return num;
+        const pageCount = Math.ceil(filteredPlugins.length / pageSize);
+
+        // 添加上一页按钮
+        if (currentPage > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.innerHTML = '&laquo;';
+            prevBtn.addEventListener('click', function() {
+                currentPage--;
+                renderPlugins();
+                setupPagination();
+                window.scrollTo(0, 0);
+            });
+            pagination.appendChild(prevBtn);
         }
-    </script>
+
+        // 添加页码按钮
+        for (let i = 1; i <= pageCount; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = 'page-btn';
+            if (i === currentPage) {
+                pageBtn.classList.add('active');
+            }
+            pageBtn.innerText = i;
+            pageBtn.addEventListener('click', function() {
+                currentPage = i;
+                renderPlugins();
+                setupPagination();
+                window.scrollTo(0, 0);
+            });
+            pagination.appendChild(pageBtn);
+        }
+
+        // 添加下一页按钮
+        if (currentPage < pageCount) {
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.innerHTML = '&raquo;';
+            nextBtn.addEventListener('click', function() {
+                currentPage++;
+                renderPlugins();
+                setupPagination();
+                window.scrollTo(0, 0);
+            });
+            pagination.appendChild(nextBtn);
+        }
+    }
+
+    // 打开插件详情模态框
+    function openPluginModal(pluginId) {
+        const plugin = pluginsData.find(p => p.id === pluginId);
+        if (!plugin) return;
+
+        // 付费类型文本
+        let paymentText = '';
+        let paymentIcon = '';
+        if (plugin.paymentType === 'paid') {
+            paymentText = '付费';
+            paymentIcon = 'fa-dollar-sign';
+        } else if (plugin.paymentType === 'freemium') {
+            paymentText = '免费版';
+            paymentIcon = 'fa-star-half-alt';
+        } else {
+            paymentText = '免费';
+            paymentIcon = 'fa-gift';
+        }
+
+        // 填充模态框内容
+        document.getElementById('modalTitle').textContent = plugin.name;
+        document.getElementById('modalAuthor').textContent = `作者: ${plugin.author}`;
+        document.getElementById('modalDescription').textContent = plugin.description;
+        document.getElementById('modalDownloads').textContent = formatDownloads(plugin.downloads);
+        document.getElementById('modalRating').textContent = plugin.rating;
+        document.getElementById('modalReviews').textContent = formatDownloads(plugin.reviews);
+        document.getElementById('modalVersion').textContent = plugin.version;
+        document.getElementById('modalPaymentType').innerHTML = `<i class="fas ${paymentIcon}"></i> ${paymentText}`;
+        document.getElementById('modalUpdated').textContent = plugin.lastUpdated;
+        document.getElementById('modalDownloadBtn').setAttribute('href', plugin.link);
+
+        // 填充标签
+        const tagsContainer = document.getElementById('modalTags');
+        tagsContainer.innerHTML = '';
+
+        // 添加付费标识
+        let paymentBadge = '';
+        if (plugin.paymentType === 'paid') {
+            paymentBadge = '<span class="payment-badge payment-paid"><i class="fas fa-dollar-sign"></i> 付费</span>';
+        } else if (plugin.paymentType === 'freemium') {
+            paymentBadge = '<span class="payment-badge payment-freemium"><i class="fas fa-star-half-alt"></i> 免费版</span>';
+        } else {
+            paymentBadge = '<span class="payment-badge payment-free"><i class="fas fa-gift"></i> 免费</span>';
+        }
+        tagsContainer.innerHTML = paymentBadge;
+
+        // 添加其他标签
+        plugin.tags.forEach(tag => {
+            const tagEl = document.createElement('span');
+            tagEl.className = 'plugin-tag';
+            tagEl.textContent = tag;
+            tagsContainer.appendChild(tagEl);
+        });
+
+        // 填充依赖关系
+        const depsContainer = document.getElementById('modalDependencies');
+        depsContainer.innerHTML = '';
+
+        if (plugin.dependencies && plugin.dependencies.length > 0) {
+            plugin.dependencies.forEach(dep => {
+                const depEl = document.createElement('li');
+                depEl.className = 'dependency-item';
+                depEl.innerHTML = `<i class="fas fa-link"></i> ${dep}`;
+                depsContainer.appendChild(depEl);
+            });
+        } else {
+            const noDepEl = document.createElement('li');
+            noDepEl.className = 'dependency-item';
+            noDepEl.innerHTML = '<i class="fas fa-check-circle"></i> 无依赖';
+            depsContainer.appendChild(noDepEl);
+        }
+
+        // 显示模态框
+        document.getElementById('pluginModal').style.display = 'block';
+    }
+
+    // 格式化下载量显示
+    function formatDownloads(num) {
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1) + 'M';
+        } else if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num;
+    }
+</script>
 </body>
 </html>
