@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft插件导航 - 发现最佳服务器插件</title>
     <link rel="stylesheet" href="https://fontawesome.ihwx.cn/6.4.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap">
     <link rel="icon" href="image.png" type="image/png">
     <style>
         :root {
@@ -44,6 +44,9 @@
             background-image:
                 radial-gradient(circle at 10% 20%, rgba(255, 214, 102, 0.1) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 20%);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* 加载动画 */
@@ -117,6 +120,12 @@
             transform: scale(1.05);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .search-container {
             flex-grow: 1;
             max-width: 500px;
@@ -139,6 +148,88 @@
         .search-box:focus {
             outline: none;
             box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 107, 107, 0.3);
+        }
+
+        /* 联系方式 */
+        .contact-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border: 2px solid #000;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 0 #000;
+        }
+
+        .contact-link i {
+            margin-right: 5px;
+        }
+
+        /* 提示按钮 */
+        .tip-button {
+            background: var(--accent);
+            border: var(--pixel-border);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #000;
+            transition: all 0.2s;
+        }
+
+        .tip-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 0 #000;
+        }
+
+        /* 提示浮窗 */
+        .tip-popup {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 300px;
+            background: var(--card-bg);
+            border: var(--pixel-border);
+            padding: 15px;
+            z-index: 101;
+            box-shadow: 4px 4px 0 #000;
+            margin-top: 10px;
+        }
+
+        .tip-popup.show {
+            display: block;
+            animation: popup-appear 0.3s ease;
+        }
+
+        @keyframes popup-appear {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tip-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+        }
+
+        .tip-content {
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* 筛选和排序栏 */
@@ -184,7 +275,7 @@
         /* 主布局 */
         .main-container {
             display: flex;
-            min-height: calc(100vh - 140px);
+            flex-grow: 1;
         }
 
         /* 侧边栏 */
@@ -306,7 +397,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-        }
+}
 
         .plugin-card {
             background: var(--card-bg);
@@ -436,7 +527,7 @@
         }
 
         .payment-freemium {
-            backgroundColor: #ffd166;
+            background-color: #ffd166;
             color: #000;
         }
 
@@ -754,6 +845,20 @@
             box-shadow: 6px 6px 0 #000;
         }
 
+        /* 页脚 */
+        .footer {
+            background-color: var(--primary);
+            padding: 20px;
+            text-align: center;
+            border-top: var(--pixel-border);
+            margin-top: auto;
+        }
+
+        .copyright {
+            color: white;
+            font-size: 0.9rem;
+        }
+
         /* 响应式设计 */
         @media (max-width: 1200px) {
             .modal-body {
@@ -765,6 +870,16 @@
             .filter-bar {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .nav-right {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
 
@@ -803,6 +918,11 @@
 
             .modal-footer {
                 flex-direction: column;
+            }
+
+            .tip-popup {
+                width: 250px;
+                right: -50px;
             }
         }
 
@@ -874,36 +994,35 @@
     <!-- 导航栏 -->
     <div class="navbar">
         <div class="logo">MC插件中心</div>
+
         <div class="search-container">
             <input type="text" class="search-box" placeholder="搜索插件...">
         </div>
-        <!-- 已移除主题切换按钮 -->
+
+        <div class="nav-right">
+            <div class="contact-links">
+                <a href="https://qm.qq.com/q/Ghue9KRxi8" class="contact-link" target="_blank">
+                    <i class="fas fa-users"></i> QQ群
+                </a>
+                <a href="https://space.bilibili.com/375148183" class="contact-link" target="_blank">
+                    <i class="fab fa-bilibili"></i> B站
+                </a>
+            </div>
+
+            <div class="tip-container">
+                <button class="tip-button" id="tipButton">
+                    <i class="fas fa-lightbulb"></i> 小提示
+                </button>
+                <div class="tip-popup" id="tipPopup">
+                    <div class="tip-title">使用技巧</div>
+                    <div class="tip-content" id="tipContent">提示内容加载中...</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 筛选和排序栏 -->
     <div class="filter-bar">
-        <div class="filter-group">
-            <span class="filter-label">版本:</span>
-            <select class="filter-select" id="versionFilter">
-                <option value="all">所有版本</option>
-                <option value="1.20">1.20.x</option>
-                <option value="1.19">1.19.x</option>
-                <option value="1.18">1.18.x</option>
-                <option value="1.17">1.17.x</option>
-                <option value="1.16">1.16.x</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <span class="filter-label">排序:</span>
-            <select class="filter-select" id="sortFilter">
-                <option value="popular">受欢迎程度</option>
-                <option value="newest">最新发布</option>
-                <option value="downloads">下载量</option>
-                <option value="rating">评分</option>
-            </select>
-        </div>
-
         <div class="filter-group">
             <span class="filter-label">每页显示:</span>
             <select class="filter-select" id="pageSizeFilter">
@@ -969,6 +1088,13 @@
             </div>
         </div>
     </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="copyright">
+            © 2025 Minecraft插件导航网站 | 本网站所有插件资源均来自互联网，仅供学习交流使用，如有侵权请联系删除
+        </div>
+    </footer>
 
     <!-- 插件详情模态框 -->
     <div class="modal" id="pluginModal">
@@ -1047,8 +1173,8 @@
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">最后更新</h3>
-                        <p id="modalUpdated">未知</p>
+                        <h3 class="modal-section-title">发布时间</h3>
+                        <p id="modalReleaseDate">未知</p>
                     </div>
                 </div>
             </div>
@@ -1064,7 +1190,7 @@
         </div>
     </div>
 
-        <script>
+    <script>
         // 扩展插件数据库
         const pluginsData = [
             {
@@ -1078,7 +1204,7 @@
                 downloads: 5579837,
                 rating: 4.8,
                 reviews: 5420,
-                lastUpdated: "2025-08-04",
+                releaseDate: "2015-07-07",
                 dependencies: ["Vault"],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1095,7 +1221,7 @@
                 downloads: 23531395,
                 rating: 4.9,
                 reviews: 3820,
-                lastUpdated: "2025-07-19",
+                releaseDate: "2011-08-25",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper", "Fabric", "Forge"],
                 paymentType: "free",
@@ -1112,7 +1238,7 @@
                 downloads: 3188890,
                 rating: 4.7,
                 reviews: 2950,
-                lastUpdated: "2025-07-18",
+                releaseDate: "2017-01-05",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1129,7 +1255,7 @@
                 downloads: 27213,
                 rating: 4.0,
                 reviews: 2780,
-                lastUpdated: "2025-08-12",
+                releaseDate: "2015-10-27",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "freemium",
@@ -1146,7 +1272,7 @@
                 downloads: 9455418,
                 rating: 4.8,
                 reviews: 3420,
-                lastUpdated: "2025-07-12",
+                releaseDate: "2011-08-25",
                 dependencies: ["WorldEdit"],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1163,10 +1289,10 @@
                 downloads: 32708,
                 rating: 4.5,
                 reviews: 4120,
-                lastUpdated: "2025-08-24",
+                releaseDate: "2019-01-30",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
-                paymentType: "free",
+                paymentType: "paid",
                 link: "https://www.spigotmc.org/resources/official-mcmmo-original-author-returns.64348/"
             },
             {
@@ -1180,7 +1306,7 @@
                 downloads: 7620099,
                 rating: 4.9,
                 reviews: 3250,
-                lastUpdated: "2025-05-26",
+                releaseDate: "2016-08-21",
                 dependencies: [],
                 serverCores: ["Bukkit", "Sponge", "Fabric", "NeoForge", "Forge", "Nukkit", "Velocity", "BungeeCord"],
                 paymentType: "free",
@@ -1197,7 +1323,7 @@
                 downloads: 15549,
                 rating: 4.8,
                 reviews: 1850,
-                lastUpdated: "2025-07-22",
+                releaseDate: "2020-01-10",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "paid",
@@ -1214,7 +1340,7 @@
                 downloads: 1923403,
                 rating: 4.7,
                 reviews: 2450,
-                lastUpdated: "2024-05-21",
+                releaseDate: "2015-04-20",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1231,7 +1357,7 @@
                 downloads: 2929030,
                 rating: 4.6,
                 reviews: 1620,
-                lastUpdated: "2025-08-09",
+                releaseDate: "2014-11-21",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1239,16 +1365,16 @@
             },
             {
                 id: 11,
-                name: "Holographic Displays",
+                name: "DecentHolograms ",
                 author: "filoghost",
                 description: "创建全息文字和图像的插件，适合用于信息显示、商店招牌或装饰用途。",
-                version: "1.8-1.20",
+                version: "1.8-1.21",
                 tags: ["全息", "显示", "装饰"],
                 category: ["decoration", "utility"],
                 downloads: 75097,
                 rating: 4.4,
                 reviews: 1780,
-                lastUpdated: "2024-01-27",
+                releaseDate: "2021-10-18",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1259,17 +1385,17 @@
                 name: "AdvancedEnchantments",
                 author: "YouHaveTrouble",
                 description: "添加多种自定义附魔效果，增强游戏战斗和工具系统，完全可配置。",
-                version: "1.16-1.21",
+                version: "1.17-1.21",
                 tags: ["附魔", "战斗", "游戏玩法"],
                 category: ["gameplay", "rpg"],
                 downloads: 30378,
                 rating: 4.3,
                 reviews: 1250,
-                lastUpdated: "2025-08-25",
+                releaseDate: "2017-07-06",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "paid",
-                link: "https://www.spigotmc.org/resources/advancedenchantments.86927/"
+                link: "https://www.spigotmc.org/resources/1-17-1-21-8-%E2%AD%95-advancedenchantments-%E2%AD%90-500-custom-enchants-%E2%AD%90create-custom-enchantments-%E2%9C%85.43058/"
             },
             {
                 id: 13,
@@ -1282,7 +1408,7 @@
                 downloads: 239636,
                 rating: 4.9,
                 reviews: 18450,
-                lastUpdated: "2024-12-02",
+                releaseDate: "2018-05-29",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper", "Sponge", "Fabric", "NeoForge", "Forge", "Standlone", "Velocity", "BungeeCord"],
                 paymentType: "free",
@@ -1295,11 +1421,11 @@
                 description: "允许玩家使用比服务器更新的MC版本进入你的服务器，增强服务器留人能力，助你收获更多玩家！",
                 version: "1.8-1.21",
                 tags: ["兼容", "管理", "跨版本"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 7827940,
                 rating: 4.8,
                 reviews: 10270,
-                lastUpdated: "2025-08-20",
+                releaseDate: "2016-03-01",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper", "Sponge", "Fabric", "NeoForge", "Forge"],
                 paymentType: "free",
@@ -1312,11 +1438,11 @@
                 description: "ViaVersion的附属插件，允许玩家使用比服务器更旧的MC版本进入你的服务器。",
                 version: "1.10-1.21",
                 tags: ["兼容", "管理", "跨版本"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 4610736,
                 rating: 4.8,
                 reviews: 1460,
-                lastUpdated: "2025-08-23",
+                releaseDate: "2016-08-05",
                 dependencies: ["ViaVersion"],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1329,11 +1455,11 @@
                 description: "ViaVersion的附属插件，允许玩家使用1.7.x和1.8.x的MC版本进入你的服务器。",
                 version: "1.8-1.21",
                 tags: ["兼容", "管理", "跨版本"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 1216329,
                 rating: 4.5,
                 reviews: 1050,
-                lastUpdated: "2025-08-12",
+                releaseDate: "2018-01-17",
                 dependencies: ["ViaVersion"],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1346,11 +1472,11 @@
                 description: "ViaRewind的附属插件，修复了ViaRewind插件上的一些BUG。",
                 version: "1.7-1.20",
                 tags: ["兼容", "管理", "跨版本"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 50037,
                 rating: 4.5,
                 reviews: 896,
-                lastUpdated: "2025-08-03",
+                releaseDate: "2018-02-06",
                 dependencies: ["ViaVersion", "ViaRewind"],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1363,11 +1489,11 @@
                 description: "一种桥接/代理插件，允许玩家使用基岩版客户端登录你的Java版服务器，实现跨端互通。",
                 version: "1.13-1.21",
                 tags: ["兼容", "管理", "代理"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 1102526,
                 rating: 4.9,
                 reviews: 4025,
-                lastUpdated: "2025-08-23",
+                releaseDate: "2020-01-10",
                 dependencies: ["ViaVersion"],
                 serverCores: ["Bukkit", "Spigot", "Paper", "Fabric", "NeoForge", "Forge", "ViaProxy", "Velocity", "BungeeCord"],
                 paymentType: "free",
@@ -1380,11 +1506,11 @@
                 description: "Geyser的附属，一种混合模式插件，用于允许从Geyser连接到在线（正版）服务器。",
                 version: "1.8-1.21",
                 tags: ["兼容", "管理", "代理"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 285421,
                 rating: 4.0,
                 reviews: 1024,
-                lastUpdated: "2025-07-22",
+                releaseDate: "2020-01-10",
                 dependencies: ["Geyser"],
                 serverCores: ["Bukkit", "Spigot", "Paper", "Fabric", "NeoForge", "Forge", "ViaProxy", "Velocity", "BungeeCord"],
                 paymentType: "free",
@@ -1401,7 +1527,7 @@
                 downloads: 439060,
                 rating: 4.4,
                 reviews: 1245,
-                lastUpdated: "2025-06-21",
+                releaseDate: "2020-07-16",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1418,7 +1544,7 @@
                 downloads: 237530,
                 rating: 4.9,
                 reviews: 6351,
-                lastUpdated: "2025-08-09",
+                releaseDate: "2015-06-25",
                 dependencies: [],
                 serverCores: ["Bukkit", "Spigot", "Paper"],
                 paymentType: "free",
@@ -1428,27 +1554,71 @@
                 id: 22,
                 name: "ViaBungee",
                 author: "ViaVersion",
-                description: "ViaVersion的BungeeCord/WaterFall版本，用于多端服",
+                description: "ViaVersion的BungeeCord/WaterFall版本，仅用于多端服。",
                 version: "最新版本",
                 tags: ["兼容", "管理", "跨版本"],
-                category: ["admin"],
+                category: ["admin", "utility"],
                 downloads: 25714,
                 rating: 4.2,
                 reviews: 135,
-                lastUpdated: "2025-01-06",
+                releaseDate: "2024-07-19",
                 dependencies: [],
                 serverCores: ["BungeeCord"],
                 paymentType: "free",
                 link: "https://hangar.papermc.io/ViaVersion/ViaBungee"
             },
+            {
+                id: 23,
+                name: "Residence",
+                author: "Zrips",
+                description: "为每一位玩家的私人区域提供保护的插件，非常适合生存服务器。",
+                version: "1.7-1.21",
+                tags: ["领地", "保护", "多人", "生存"],
+                category: ["protection", "utility", "gameplay"],
+                downloads: 305809,
+                rating: 4.6,
+                reviews: 1154,
+                releaseDate: "2015-08-29",
+                dependencies: ["CMILib"],
+                serverCores: ["Bukkit", "Spigot", "Paper"],
+                paymentType: "freemium",
+                link: "https://www.spigotmc.org/resources/residence-1-7-10-up-to-1-21.11480/"
+            },
+            {
+                id: 24,
+                name: "CMILib",
+                author: "Zrips",
+                description: "一种支持库插件，Zrips大佬的插件都需要用到这个支持库。",
+                version: "1.7-1.21",
+                tags: ["库", "协议", "开发"],
+                category: ["api"],
+                downloads: 343445,
+                rating: 4.0,
+                reviews: 42,
+                releaseDate: "2021-01-08",
+                dependencies: [],
+                serverCores: ["Bukkit", "Spigot", "Paper"],
+                paymentType: "free",
+                link: "https://www.spigotmc.org/resources/cmilib.87610/"
+            }
+        ];
+
+        // 使用技巧数据
+        const tips = [
+            "部分付费插件的免费版本可以在原网站的原帖中找到，请仔细观察👀",
+            "勤使用搜索功能查找插件，可以搜索的范围包括插件名称、描述、Tag标签等等。",
+            "点击插件卡片可以查看详细信息，包括服务端核心版本支持。",
+            "插件详情中的依赖关系可以帮助您了解需要安装的其他插件。",
+            "您可以通过每页显示选项控制每页显示的插件数量。",
+            "关注我们的B站主页获取站长的第一手资料！",
+            "如果有什么疑问，可以加入导航栏上的QQ群进行询问和探讨。",
+            "加入QQ群可以与其他服主交流插件使用经验。"
         ];
 
         // 全局变量
         let currentPage = 1;
         let pageSize = 6;
         let currentCategory = 'discover';
-        let currentVersion = 'all';
-        let currentSort = 'popular';
         let filteredPlugins = [];
 
         // DOM加载完成后执行
@@ -1486,28 +1656,33 @@
                 filterPlugins();
             });
 
-            // 版本筛选
-            const versionFilter = document.getElementById('versionFilter');
-            versionFilter.addEventListener('change', function() {
-                currentVersion = this.value;
-                currentPage = 1;
-                filterPlugins();
-            });
-
-            // 排序筛选
-            const sortFilter = document.getElementById('sortFilter');
-            sortFilter.addEventListener('change', function() {
-                currentSort = this.value;
-                currentPage = 1;
-                filterPlugins();
-            });
-
             // 每页显示数量
             const pageSizeFilter = document.getElementById('pageSizeFilter');
             pageSizeFilter.addEventListener('change', function() {
                 pageSize = parseInt(this.value);
                 currentPage = 1;
                 filterPlugins();
+            });
+
+            // 提示按钮功能
+            const tipButton = document.getElementById('tipButton');
+            const tipPopup = document.getElementById('tipPopup');
+            const tipContent = document.getElementById('tipContent');
+
+            tipButton.addEventListener('click', function() {
+                // 随机选择一条提示
+                const randomTip = tips[Math.floor(Math.random() * tips.length)];
+                tipContent.textContent = randomTip;
+
+                // 显示/隐藏提示浮窗
+                tipPopup.classList.toggle('show');
+            });
+
+            // 点击页面其他区域关闭提示浮窗
+            document.addEventListener('click', function(event) {
+                if (!tipButton.contains(event.target) && !tipPopup.contains(event.target)) {
+                    tipPopup.classList.remove('show');
+                }
             });
 
             // 模态框功能
@@ -1543,13 +1718,6 @@
                 );
             }
 
-            // 然后根据版本筛选
-            if (currentVersion !== 'all') {
-                filteredPlugins = filteredPlugins.filter(plugin =>
-                    plugin.version.includes(currentVersion)
-                );
-            }
-
             // 然后根据搜索词筛选
             if (searchTerm.length >= 2) {
                 filteredPlugins = filteredPlugins.filter(plugin =>
@@ -1557,28 +1725,6 @@
                     plugin.description.toLowerCase().includes(searchTerm) ||
                     plugin.tags.some(tag => tag.toLowerCase().includes(searchTerm))
                 );
-            }
-
-            // 最后排序
-            switch(currentSort) {
-                case 'newest':
-                    filteredPlugins.sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
-                    break;
-                case 'downloads':
-                    filteredPlugins.sort((a, b) => b.downloads - a.downloads);
-                    break;
-                case 'rating':
-                    filteredPlugins.sort((a, b) => b.rating - a.rating);
-                    break;
-                case 'popular':
-                default:
-                    // 综合评分和下载量
-                    filteredPlugins.sort((a, b) => {
-                        const aScore = a.rating * Math.log(a.downloads);
-                        const bScore = b.rating * Math.log(b.downloads);
-                        return bScore - aScore;
-                    });
-                    break;
             }
 
             // 重新渲染插件和分页
@@ -1763,7 +1909,7 @@
             document.getElementById('modalReviews').textContent = formatDownloads(plugin.reviews);
             document.getElementById('modalVersion').textContent = plugin.version;
             document.getElementById('modalPaymentType').innerHTML = `<i class="fas ${paymentIcon}"></i> ${paymentText}`;
-            document.getElementById('modalUpdated').textContent = plugin.lastUpdated;
+            document.getElementById('modalReleaseDate').textContent = plugin.releaseDate;
             document.getElementById('modalDownloadBtn').setAttribute('href', plugin.link);
 
             // 填充服务端核心版本标签
