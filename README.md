@@ -1,6 +1,7 @@
 <div align="center">
 
 # Minecraft 服务器插件导航网站
+**[English version](https://github.com/Kauo7420/Kauo7420/blob/main/README_en.md)**
 发现最佳服务器插件 | [🌐直接访问](https://mcplugin.netlify.app/)
 
 [![QQ群](https://img.shields.io/badge/-QQ%E7%BE%A4%EF%BD%9C684957856-blue?style=flat&logo=QQ)](https://qm.qq.com/q/Ghue9KRxi8)
