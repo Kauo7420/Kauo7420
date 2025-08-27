@@ -10,6 +10,7 @@ const tips = [
     "部分付费插件的免费版本可以在原网站的原帖中找到，请仔细观察👀",
     "可使用搜索功能查找插件，搜索范围包括插件名称、描述、标签等。",
     "点击插件卡片可以查看详细信息，包括服务端核心版本支持。",
+    "可以通过清除本地存储或调用 localStorage.removeItem('manualDarkMode') 来恢复主题自动跟随系统设置的功能。",
     "插件详情中的依赖关系可以帮助您了解需要安装的其他插件。",
     "您可以通过每页显示选项控制每页显示的插件数量。",
     "关注我们的 B 站主页获取站长的第一手资料！",
@@ -43,21 +44,48 @@ function initializeApp() {
     const darkModeIndicator = document.getElementById('darkModeIndicator');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // 初始检测
-    updateDarkModeIndicator(prefersDarkScheme.matches);
+    // 检查本地存储中是否有手动设置的模式
+    const manualMode = localStorage.getItem('manualDarkMode');
     
-    // 监听系统颜色模式变化
+    // 初始检测
+    if (manualMode !== null) {
+        // 如果用户手动设置过，使用手动设置
+        updateDarkMode(manualMode === 'dark');
+    } else {
+        // 否则使用系统设置
+        updateDarkMode(prefersDarkScheme.matches);
+    }
+    
+    // 监听系统颜色模式变化（仅当没有手动设置时生效）
     prefersDarkScheme.addEventListener('change', e => {
-        updateDarkModeIndicator(e.matches);
+        if (localStorage.getItem('manualDarkMode') === null) {
+            updateDarkMode(e.matches);
+        }
     });
     
-    function updateDarkModeIndicator(isDarkMode) {
+    // 添加点击事件监听器
+    darkModeIndicator.addEventListener('click', function() {
+        // 获取当前模式
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        // 切换模式
+        const newMode = !isDark ? 'dark' : 'light';
+        localStorage.setItem('manualDarkMode', newMode);
+        updateDarkMode(newMode === 'dark');
+    });
+    
+    // 更新暗黑模式的函数
+    function updateDarkMode(isDarkMode) {
         if (isDarkMode) {
             document.body.classList.remove('light-mode');
             document.body.classList.add('dark-mode');
+            darkModeIndicator.querySelector('.light-icon').style.display = 'none';
+            darkModeIndicator.querySelector('.dark-icon').style.display = 'inline-block';
         } else {
             document.body.classList.remove('dark-mode');
             document.body.classList.add('light-mode');
+            darkModeIndicator.querySelector('.dark-icon').style.display = 'none';
+            darkModeIndicator.querySelector('.light-icon').style.display = 'inline-block';
         }
     }
     

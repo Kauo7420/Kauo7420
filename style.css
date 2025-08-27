@@ -27,96 +27,124 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    body:not(.light-mode) {
+    body.dark-mode {
         background-color: var(--dark-bg);
         color: var(--dark-text);
     }
 
-    body:not(.light-mode) .sidebar {
+    body.dark-mode .sidebar {
         background-color: var(--dark-sidebar-bg);
     }
 
-    body:not(.light-mode) .plugin-card,
-    body:not(.light-mode) .category-item,
-
-    body:not(.light-mode) .category-item:not(.active) {
+    body.dark-mode .plugin-card,
+    body.dark-mode .category-item,
+    body.dark-mode .category-item:not(.active) {
         background: var(--dark-card-bg);
         color: var(--dark-text);
     }
 
-    body:not(.light-mode) .modal-content,
-    body:not(.light-mode) .modal-stat,
-    body:not(.light-mode) .dependency-item,
-    body:not(.light-mode) select.filter-select {
+    body.dark-mode .modal-content,
+    body.dark-mode .modal-stat,
+    body.dark-mode .dependency-item,
+    body.dark-mode select.filter-select {
         background-color: var(--dark-card-bg);
         color: var(--dark-text);
     }
 
-    body:not(.light-mode) .plugin-description,
-    body:not(.light-mode) .modal-description {
+    body.dark-mode .plugin-description,
+    body.dark-mode .modal-description {
         color: #bbb;
     }
 
-    body:not(.light-mode) .dark-mode-indicator .light-icon {
+    body.dark-mode .dark-mode-indicator .light-icon {
         display: none;
     }
-    body:not(.light-mode) .dark-mode-indicator .dark-icon {
+    body.dark-mode .dark-mode-indicator .dark-icon {
         display: inline-block;
         color: var(--dark-accent);
     }
-        body:not(.light-mode) .filter-label {
+    
+    body.dark-mode .filter-label {
         color: var(--dark-text);
     }
     
-    body:not(.light-mode) .tip-popup {
+    body.dark-mode .tip-popup {
         background-color: var(--dark-card-bg);
         color: var(--dark-text);
         border-color: var(--dark-text);
     }
     
-    body:not(.light-mode) .tip-popup.show {
+    body.dark-mode .tip-popup.show {
         background-color: var(--dark-card-bg);
     }
     
-    body:not(.light-mode) .tip-content {
+    body.dark-mode .tip-content {
         color: var(--dark-text);
     }
     
-    body:not(.light-mode) .search-box-container {
+    body.dark-mode .search-box-container {
         background-color: var(--dark-input-bg);
     }
     
-    body:not(.light-mode) .search-box {
+    body.dark-mode .search-box {
         background-color: var(--dark-input-bg);
         color: var(--dark-text);
         border-color: var(--dark-text);
     }
     
-    body:not(.light-mode) .search-box-container i {
+    body.dark-mode .search-box-container i {
         color: var(--dark-text);
     }
     
-    body:not(.light-mode) .search-box::placeholder {
+    body.dark-mode .search-box::placeholder {
         color: #aaa;
     }
 
-    body:not(.light-mode) .stat-label {
+    body.dark-mode .stat-label {
         color: var(--dark-text) !important;
     }
-}
 
-.dark-mode-indicator .dark-icon {
-    display: none;
-}
-.dark-mode-indicator .light-icon {
-    display: inline-block;
-    color: #ffd700;
+    body.dark-mode #loader {
+        background-color: var(--dark-bg);
+    }
+    
+    body.dark-mode .loader-content {
+        color: var(--dark-text);
+    }
+    
+    body.dark-mode .pixel-loader::before {
+        background: var(--dark-primary);
+        box-shadow: 0 0 10px var(--dark-primary);
+    }
+
+    body.dark-mode .close-modal {
+        color: var(--dark-text);
+    }
+    
+    body.dark-mode .close-modal:hover {
+        color: var(--danger);
+    }
 }
 
 .dark-mode-indicator {
     font-size: 1.2rem;
     padding: 8px;
-    cursor: default;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dark-mode-indicator:hover {
+    transform: scale(1.1);
+}
+
+.dark-mode-indicator .dark-icon {
+    display: none;
+    color: var(--dark-accent);
+}
+
+.dark-mode-indicator .light-icon {
+    display: inline-block;
+    color: #ffd700;
 }
 
 @font-face {
@@ -163,6 +191,7 @@ body {
 
 .loader-content {
     text-align: center;
+    color: var(--text);
 }
 
 .pixel-loader {
