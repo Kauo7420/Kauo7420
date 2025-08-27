@@ -39,8 +39,10 @@ This is a plugin navigation website designed specifically for Minecraft server a
 - Pure frontend implementation, no backend support required
 
 ### Website Maintenance
-- Kauo7420
-- Jursin
+
+<!-- readme: collaborators,contributors -start -->
+
+<!-- readme: collaborators,contributors -end -->
 
 ### Contact Information
 - QQ Group: [Join Now](https://qm.qq.com/q/Ghue9KRxi8)
@@ -48,7 +50,8 @@ This is a plugin navigation website designed specifically for Minecraft server a
 - Demo Video: [Watch Demo](https://www.bilibili.com/video/BV1wZvPzXENR)
 
 ### Copyright Statement
-All plugin resources on this website are from the internet and are for learning and communication purposes only. If there is any infringement, please contact us for removal.
+> [!warning]
+> All plugin resources on this website are from the internet and are for learning and communication purposes only. If there is any infringement, please contact us for removal.
 
 ## Star History
 
