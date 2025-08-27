@@ -5,7 +5,7 @@
 
 [![QQ群](https://img.shields.io/badge/-QQ%E7%BE%A4%EF%BD%9C684957856-blue?style=flat&logo=QQ)](https://qm.qq.com/q/Ghue9KRxi8)
 [![bilibili](https://img.shields.io/badge/-bilibili%E8%A7%86%E9%A2%91%EF%BD%9CBV1wZvPzXENR-%23FB7299?style=flat&logo=bilibili)](https://www.bilibili.com/video/BV1wZvPzXENR)
-![站长B站](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fspace.bilibili.com%2F375148183&label=%E4%B8%80%E5%8F%AA%E9%87%8E%E7%94%9F%E3%81%AE%E5%8D%A1%E6%B2%83&labelColor=%23d9e3f0&countColor=%2337d67a&style=flat)
+[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FKauo7420%2FKauo7420&label=Visitors&countColor=%23263759&style=flat)](https://visitorbadge.io/)
 
 ![Repobeats](https://repobeats.axiom.co/api/embed/f16b160ea419610190dff30d327b56ad37f2e86e.svg "Repobeats analytics image")
 
