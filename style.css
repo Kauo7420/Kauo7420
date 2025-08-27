@@ -245,6 +245,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 8px;
 }
 
 .filter-label {
@@ -541,6 +542,7 @@ select.filter-select:focus {
     color: white;
     text-align: center;
     border: var(--pixel-border);
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
