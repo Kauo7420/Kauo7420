@@ -406,5 +406,22 @@
         "serverCores": ["Bukkit", "Spigot", "Paper"],
         "paymentType": "free",
         "link": "https://www.spigotmc.org/resources/cmilib.87610/"
+    },
+    {
+        "id": 25,
+        "name": "GSit",
+        "author": "Gecolay",
+        "description": "给玩家添加多种可执行的动作，例如原地坐下、趴下、躺下、旋转陀螺，为服务器带来一丝乐趣！",
+        "version": "1.16-1.21",
+        "tags": ["动作", "互动", "休闲"],
+        "category": ["gameplay", "decoration"],
+        "downloads": 2140807,
+        "rating": 5.0,
+        "reviews": 1950,
+        "releaseDate": "2018-11-12",
+        "dependencies": [],
+        "serverCores": ["Bukkit", "Spigot", "Paper"],
+        "paymentType": "free",
+        "link": "https://www.spigotmc.org/resources/gsit-modern-sit-seat-and-chair-lay-and-crawl-plugin-1-16-1-21-8.62325/"
     }
 ]
