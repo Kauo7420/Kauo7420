@@ -8,13 +8,13 @@ let filteredPlugins = [];
 // 使用技巧数据
 const tips = [
     "部分付费插件的免费版本可以在原网站的原帖中找到，请仔细观察👀",
-    "勤使用搜索功能查找插件，可以搜索的范围包括插件名称、描述、Tag标签等等。",
+    "可使用搜索功能查找插件，搜索范围包括插件名称、描述、标签等。",
     "点击插件卡片可以查看详细信息，包括服务端核心版本支持。",
     "插件详情中的依赖关系可以帮助您了解需要安装的其他插件。",
     "您可以通过每页显示选项控制每页显示的插件数量。",
-    "关注我们的B站主页获取站长的第一手资料！",
-    "如果有什么疑问，可以加入导航栏上的QQ群进行询问和探讨。",
-    "加入QQ群可以与其他服主交流插件使用经验。"
+    "关注我们的 B 站主页获取站长的第一手资料！",
+    "如果有什么疑问，可以加入 QQ 群进行询问和探讨。",
+    "加入 QQ 群可以与其他服主交流插件使用经验。"
 ];
 
 // DOM加载完成后执行
@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function initializeApp() {
+    const darkModeIndicator = document.getElementById('darkModeIndicator');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // 初始检测
+    updateDarkModeIndicator(prefersDarkScheme.matches);
+    
+    // 监听系统颜色模式变化
+    prefersDarkScheme.addEventListener('change', e => {
+        updateDarkModeIndicator(e.matches);
+    });
+    
+    function updateDarkModeIndicator(isDarkMode) {
+        if (isDarkMode) {
+            document.body.classList.remove('light-mode');
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+        }
+    }
+    
     // 初始化插件显示
     filteredPlugins = [...pluginsData];
     renderPlugins();
