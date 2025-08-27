@@ -3,8 +3,8 @@
 # Minecraft Server Plugin Directory Website
 Discover the Best Server Plugins | [🌐Direct access](https://mcplugin.netlify.app/)
 
-[![QQ群](https://img.shields.io/badge/-QQ%E7%BE%A4%EF%BD%9C684957856-blue?style=flat&logo=QQ)](https://qm.qq.com/q/Ghue9KRxi8)
-[![bilibili](https://img.shields.io/badge/-bilibili%E8%A7%86%E9%A2%91%EF%BD%9CBV1wZvPzXENR-%23FB7299?style=flat&logo=bilibili)](https://www.bilibili.com/video/BV1wZvPzXENR)
+[![QQ Group](https://img.shields.io/badge/-QQ%E7%BE%A4%EF%BD%9C684957856-blue?style=flat&logo=QQ)](https://qm.qq.com/q/Ghue9KRxi8)
+[![Bilibili](https://img.shields.io/badge/-bilibili%E8%A7%86%E9%A2%91%EF%BD%9CBV1wZvPzXENR-%23FB7299?style=flat&logo=bilibili)](https://www.bilibili.com/video/BV1wZvPzXENR)
 [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FKauo7420%2FKauo7420&label=Visitors&countColor=%23263759&style=flat)](https://visitorbadge.io/)
 
 ![Repobeats](https://repobeats.axiom.co/api/embed/f16b160ea419610190dff30d327b56ad37f2e86e.svg "Repobeats analytics image")
@@ -56,5 +56,5 @@ All plugin resources on this website are from the internet and are for learning 
 
 [![Star 历史](https://starchart.cc/Kauo7420/Kauo7420.svg?variant=adaptive)](https://starchart.cc/Kauo7420/Kauo7420)
 
-如果这个项目对您有帮助，请点亮 Star ⭐
+If this project has been helpful to you, please give it a star! ⭐
 </div>
