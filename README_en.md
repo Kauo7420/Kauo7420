@@ -40,9 +40,26 @@ This is a plugin navigation website designed specifically for Minecraft server a
 
 ### Website Maintenance
 
-<!-- readme: collaborators,contributors -start -->
-
-<!-- readme: collaborators,contributors -end -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/Kauo7420">
+                    <img src="https://avatars.githubusercontent.com/u/98333724?v=4" width="100;" alt="Kauo7420"/>
+                    <br />
+                    <sub><b>Kauo7420</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Jursin">
+                    <img src="https://avatars.githubusercontent.com/u/127487914?v=4" width="100;" alt="Jursin"/>
+                    <br />
+                    <sub><b>Jursin</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 
 ### Contact Information
 - QQ Group: [Join Now](https://qm.qq.com/q/Ghue9KRxi8)
