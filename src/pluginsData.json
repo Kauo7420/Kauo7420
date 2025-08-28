@@ -423,5 +423,39 @@
         "serverCores": ["Bukkit", "Spigot", "Paper"],
         "paymentType": "free",
         "link": "https://www.spigotmc.org/resources/gsit-modern-sit-seat-and-chair-lay-and-crawl-plugin-1-16-1-21-8.62325/"
+    },
+    {
+        "id": 26,
+        "name": "KcLoginGui",
+        "author": "Time_",
+        "description": "为AuthMe插件添加了基岩版登录窗口，为使用Geyser的Bedrock玩家提供更优质的登录和注册体验。",
+        "version": "1.20-1.21",
+        "tags": ["登录", "兼容", "互通", "实用"],
+        "category": ["admin", "utility"],
+        "downloads": 291,
+        "rating": 5.0,
+        "reviews": 1,
+        "releaseDate": "2024-08-26",
+        "dependencies": ["AuthMe"],
+        "serverCores": ["Bukkit", "Spigot", "Paper"],
+        "paymentType": "free",
+        "link": "https://www.spigotmc.org/resources/kclogingui-authme-support-folia.119168/"
+    },
+    {
+        "id": 27,
+        "name": "BedrockPlayerSupport",
+        "author": "DongShao",
+        "description": "提升基岩版玩家在Java版服务器的体验，为常用命令和功能提供基于 GUI 的界面，弥补操作上的差距。",
+        "version": "1.19-1.21",
+        "tags": ["GUI", "兼容", "互通"],
+        "category": ["admin", "utility"],
+        "downloads": 1574,
+        "rating": 5.0,
+        "reviews": 9,
+        "releaseDate": "2024-03-06",
+        "dependencies": [],
+        "serverCores": ["Bukkit", "Spigot", "Paper"],
+        "paymentType": "free",
+        "link": "https://www.spigotmc.org/resources/bedrockplayersupport.115450/"
     }
 ]
