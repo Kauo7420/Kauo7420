@@ -4,6 +4,8 @@
 
 **Minecraft社区开发者 | B站视频创作者 | BlockVerse社区运营者**
 
+[Looking for the English version? 👉Click here!👈](https://github.com/Kauo7420/Kauo7420/blob/main/README_en.md)
+
 [![](https://img.shields.io/badge/Bilibili-Kauo7420-blue?logo=bilibili)](https://space.bilibili.com/375148183)
 [![](https://img.shields.io/badge/GitHub-Kauo7420-green?logo=github)](https://github.com/Kauo7420)
 
