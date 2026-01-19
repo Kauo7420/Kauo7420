@@ -48,7 +48,7 @@ You can view my [Bilibili Space](https://space.bilibili.com/375148183) on the Bi
 
 - **[BlockVerse QQ Group Entry](https://qm.qq.com/q/pytpZhA24M)**
 - **What is this group?**
-  > 💬 **Water Friend Group** (Guguga) | 🖥 **Server Admins Group** (Discussion) | 📂 **Resource Sharing** (Sharing good items)
+  > 💬 **Water Friend Group** (Chatting) | 🖥 **Server Admins Group** (Discussion) | 📂 **Resource Sharing** (Sharing good items)
 
 ## 💬 Contact Me
 
