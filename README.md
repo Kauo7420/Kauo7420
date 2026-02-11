@@ -1,84 +1,125 @@
 <div align="center">
 
-# 🌟 一名平凡的学生党
+# 👋 你好，我是 Kauo7420
 
-**Minecraft社区开发者 | B站视频创作者 | BlockVerse社区运营者**
+[English Version](README_en.md) | [Deutsche Version](README_de.md) | [日本語版](README_ja.md) | [한국어 버전](README_ko.md) | [Русская версия](README_ru.md) | [Versión en español](README_es.md) | [Version française](README_fr.md)
 
-[Looking for the English version? 👉Click here!👈](https://github.com/Kauo7420/Kauo7420/blob/main/README_en.md)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
-[![](https://img.shields.io/badge/Bilibili-Kauo7420-blue?logo=bilibili)](https://space.bilibili.com/375148183)
-[![](https://img.shields.io/badge/GitHub-Kauo7420-green?logo=github)](https://github.com/Kauo7420)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Kauo7420)](https://git.io/streak-stats)
+
+### Minecraft 开发者 · 社区翻译者 · 技术内容创作者 · 社区贡献者
+
+<p align="center">
+<b>致力于为 Minecraft 社区贡献自己的一份力量，为每一位 Minecraft 玩家带来一个良好的游戏环境</b>
+</p>
+
+<p align="center">
+<a href="<BLOG_URL>"><img src="https://img.shields.io/badge/博客-技术文章-blue?style=for-the-badge&logo=blogger" alt="Blog"></a>
+<a href="<BILIBILI_URL>"><img src="https://img.shields.io/badge/Bilibili-视频教程-pink?style=for-the-badge&logo=bilibili" alt="Bilibili"></a>
+<a href="https://github.com/Kauo7420?tab=repositories"><img src="https://img.shields.io/badge/Github-开发项目-red?style=for-the-badge&logo=github" alt="Github"></a>
+</p>
 
 </div>
 
-## 🎯 关于我
+---
 
-初次见面，很高兴认识你！我的通用名是**Kauo7420**，当然，你也可以直接称呼我为**卡沃**（中文名）
+## 个人简介 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
 
-基本信息：
+我是一名主要钻研 **Minecraft 社区** 的创作者。凭借对 JVM 机制与 Minecraft 服务端核心（NMS）的深入理解，我专注于解决高并发环境下的性能瓶颈问题，并编写相关教程文档文案解决方案。
 
-- **来自**：中国湖南
-- **生日**：2007年
-- **性别**：男
-- **职业**：学生
+我的核心关注领域：
 
-我主要在以下平台参与创作：
+* **服务端架构：** 基于 Folia/Paper 的高性能集群设计与负载均衡。
+* **视频创作：** 善于制作一些基础教学视频，深度详解 Minecraft 机制与社区生态。
+* **文档创作：** 拥有长期撰写Markdown文档的丰富经验，已经创作了许多基础教学文案。
+* **开源贡献：** 积极参与开源社区，通过一些小型项目的开发积累自己的经验。
 
-1. 哔哩哔哩
-2. MC百科（MCmod）
-3. Github
-
-你可以在哔哩哔哩视频平台上查看我的[B站空间](https://space.bilibili.com/375148183)，自媒体方面，我比较专注分享Minecraft教程、创意玩法与社区动态。
-
-> 💡 *“Keep On Going, Never Give up!”*
-
-## ⚙️ 技能栈
-
-| 领域                | 技能与工具                                                                 |
-|---------------------|--------------------------------------------------------------------------|
-| **Minecraft开发**   | 仅专注于翻译与配置                                                          |
-| **视频创作**        | Capcut, OBS Studio, 脚本策划与分镜设计                                      |
-| **社区运营**        | Discord管理, 社区活动策划, 服务器运维 (Java Edition), 用户增长策略          |
-| **其他**            | Git/GitHub, HTML/CSS/JS (轻量前端),                                        |
-
-## 🚀 项目展示
-
-### 🔥 B站视频系列（精选）
-
-- [《从零开始教你制作Modrinth整合包！轻松安装你的专属Minecraft整合包》](https://www.bilibili.com/video/BV1im41197pN)  
-  *收录时4.6万+播放 | 保姆级教程：组装自己的Modrinth整合包*  
-- [《【永久免费MC服务器】一分钟快速上手：简幻欢开服超简单教程》](https://www.bilibili.com/video/BV12Q4y1c7vW)  
-  *收录时3.5万+播放 | 测试果风式剪辑技术的一个视频*
-
-### 🛠️ 开源项目（GitHub仓库）
-
-| 项目名称                | 描述                                      | 链接                                                                 |
-|-------------------------|------------------------------------------|----------------------------------------------------------------------|
-| [MCPinpoint](https://github.com/Kauo7420/MCPinpoint) | 快速搜索你的理想Minecraft插件的导航站。 | [![GitHub](https://img.shields.io/badge/GitHub-Kauo7420-181717?logo=github)](https://github.com/Kauo7420/MCPinpoint) |
-| [PCL-HomePage](https://github.com/Kauo7420/PCL-HomePage) | 一个基于PCL2启动器的主页配置文件 | [![GitHub](https://img.shields.io/badge/GitHub-Kauo7420-181717?logo=github)](https://github.com/Kauo7420/PCL-HomePage) |
-
-### 🌐 BlockVerse社区生态
-
-- **[BlockVerse QQ群入口](https://qm.qq.com/q/pytpZhA24M)**
-- **这是什么群？**
-  > 💬 **水友群**（咕咕嘎嘎） | 🖥 **服主交流群**（探讨问题） | 📂 **资源分享**（分享好物）
-
-## 💬 联系我
-
-- 📫 **B站**：[@Kauo7420](https://space.bilibili.com/375148183)
-- 💻 **GitHub**：[github.com/Kauo7420](https://github.com/Kauo7420)
-- 🐧 **QQ群**：[BlockVerse水友群](https://qm.qq.com/q/pytpZhA24M)
-- 🌐 **Discord**：[BlockVerse官方频道](https://discord.gg/UtT3M9qhRb)（不常用）
-- 📧 **邮箱**：kauo7420@qq.com
-
-## 📊 GitHub 数据看板
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Kauo7420&show_icons=true&theme=radical&hide_border=true)  
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs?username=Kauo7420&layout=compact&theme=radical&hide_border=true)
-
-> ✨ *“我曾在游戏里花一周修建城堡，却因为一个失误而付之一炬。我生气过，但最终明白——真正重要的不是城堡，是我学会建造它的那些夜晚。”*  
-> 👉 [加入 BlockVerse 水友群](https://qm.qq.com/q/pytpZhA24M) | [关注我的B站](https://space.bilibili.com/375148183)  
+> *“我曾在游戏里花一周修建城堡，却因为一个失误而付之一炬。我生气过，但最终明白——真正重要的不是城堡，是我学会建造它的那些夜晚。”*
 
 ---
 
-*本主页将不定期更新(可能很久……) ✨ | 2026年1月19日 | 由 [Kauo7420](https://github.com/Kauo7420) 撰写完成*
+## 技术栈 <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
+
+<div align="center">
+
+### 💻 创作代码 & 编程能力
+
+| 核心领域 | 技术栈与工具 | 熟练度 |
+|------|------|------|
+| 编程语言 | HTML, CSS, JavaScript, Python | ⭐⭐⭐☆☆ |
+| 开发工具 | IntelliJ IDEA, Maven/Gradle, YourKit, Grafana | ⭐⭐☆☆☆ |
+
+### 🎮 Minecraft 技术能力
+
+| 分类 | 技术栈 / 能力 | 熟练度 | 说明 |
+|------|----------------|----------|------|
+| 服务端 | Paper / Purpur / Folia | ⭐⭐⭐⭐⭐ | 高性能服务器部署与优化 |
+| 插件 | Spigot / Paper API | ⭐⭐⭐⭐☆ | 插件整合 / 修改 / 适配 |
+| 模组 | Fabric / Forge | ⭐⭐⭐⭐☆ | 模组整合与适配 |
+| 服务端管理 | Pterodactyl / MCSManager | ⭐⭐⭐⭐☆ | 自动化部署与运维 |
+| 性能优化 | Spark / Timings / Aikar Flags | ⭐⭐⭐⭐⭐ | TPS & 内存 & GC 调优 |
+| 联机架构 | Velocity / BungeeCord | ⭐⭐☆☆☆ | 群组服与跨服架构 |
+| 权限系统 | LuckPerms | ⭐⭐⭐⭐⭐ | 权限体系设计 |
+| 经济系统 | PlayerPoints / Vault | ⭐⭐⭐⭐☆ | 经济系统规划 |
+| 自动化 | Shell | ⭐⭐⭐☆☆ | 运维脚本 |
+
+### 🎬 视频创作 & 后期技术
+
+| 分类 | 工具 / 技术 | 熟练度 | 说明 |
+|------|--------------|----------|------|
+| 剪辑 | Premiere Pro / 剪映 | ⭐⭐⭐⭐⭐ | 视频剪辑 / 节奏控制 |
+| 封面设计 | Photoshop / 剪映 | ⭐⭐⭐⭐☆ | 缩略图设计 |
+| 录制 | OBS Studio | ⭐⭐⭐⭐⭐ | 游戏录制 / 直播推流 |
+| 脚本策划 | Storyboard / 脚本拆解 | ⭐⭐⭐⭐☆ | 视频策划 |
+
+### 🌍 汉化翻译 & 本地化能力
+
+| 分类 | 能力 | 熟练度 | 说明 |
+|------|------|----------|------|
+| 翻译语言 | EN → ZH-CN | ⭐⭐⭐⭐⭐ | 专业级翻译 |
+| 术语统一 | Minecraft 技术术语体系 | ⭐⭐⭐⭐⭐ | 统一标准译名 |
+| 插件汉化 | YAML / JSON / Lang 文件 | ⭐⭐⭐⭐⭐ | 插件文本本地化 |
+| 模组汉化 | i18n / assets/lang | ⭐⭐⭐⭐☆ | Fabric / Forge |
+| 文档翻译 | Markdown / Wiki | ⭐⭐⭐⭐⭐ | 官方文档汉化 |
+| 校对 | 技术文档语义修正 | ⭐⭐⭐⭐☆ | 语义准确 + 可读性 |
+| 本地化适配 | 中文玩家表达习惯 | ⭐⭐⭐⭐⭐ | 文化适配 |
+
+### 🛠️ 工具链 & 工作流
+
+| 分类 | 工具 | 说明 |
+|------|------|------|
+| 代码编辑 | VS Code / IntelliJ IDEA | 插件开发 / 脚本 |
+| 版本管理 | Git / GitHub | 版本控制 |
+| 文档 | VuePress / VitePress / MkDocs | 教程站构建 |
+| 自动化 | GitHub Actions | CI/CD |
+| 设计 | Canva | UI / 封面 / 页面 |
+| 项目管理 | Notion / Obsidian | 内容规划 |
+
+</div>
+
+---
+
+## 内容创作与教学 <img src="https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/65ba565823dceib1.gif" width="30">
+
+我热衷于分享知识，帮助开发者从零开始构建高质量的服务端。
+
+* **Bilibili:** 发布关于架设服务器、制作整合包、介绍社区内容的视频教程。
+* **技术博客:** 撰写关于 JVM 调优、GC 机制分析以及高并发架构设计的深度文章。
+
+<div align="left">
+<a href="https://space.bilibili.com/375148183"><b>🎬 Bilibili 频道</b></a> |
+<a href="https://kauo7420.github.io/docs/blog/"><b>📄 技术博客</b></a>
+</div>
+
+---
+
+## 合作与联系 <img src="https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/66e6c5081382flLJ.gif" width="30">
+
+如果您对 **Minecraft 服务端架构咨询**、**定制插件开发** 或 **技术内容共创** 感兴趣，欢迎联系：
+
+* 📧 **邮箱:** kauo7420@foxmail.com
+* 💬 **Discord:** https://discord.gg/S28cQJM9bt
+* 🐧 **QQ:** 2673861652

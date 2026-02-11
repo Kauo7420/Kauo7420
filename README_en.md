@@ -1,71 +1,123 @@
-## 🎯 About Me
+<div align="center">
 
-Nice to meet you! My username is **Kauo7420**, and you can also call me **Kavo** (Chinese name).
+# 👋 Hi, I'm Kauo7420
 
-Basic Information:
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
-- **From**: Hunan, China
-- **Birthday**: 2007
-- **Gender**: Male
-- **Occupation**: Student
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Kauo7420)](https://git.io/streak-stats)
 
-I mainly participate in content creation on the following platforms:
+### Minecraft Developer · Community Translator · Technical Content Creator · Open Source Contributor
 
-1. Bilibili
-2. MC Wiki (MCmod)
-3. GitHub
+<p align="center">
+<b>Dedicated to contributing to the Minecraft community and creating a better gameplay environment for every player.</b>
+</p>
 
-You can view my [Bilibili Space](https://space.bilibili.com/375148183) on the Bilibili video platform. In terms of content creation, I focus on sharing Minecraft tutorials, creative gameplay, and community updates.
+<p align="center">
+<a href="<BLOG_URL>"><img src="https://img.shields.io/badge/Blog-Tech%20Articles-blue?style=for-the-badge&logo=blogger" alt="Blog"></a>
+<a href="<BILIBILI_URL>"><img src="https://img.shields.io/badge/Bilibili-Video%20Tutorials-pink?style=for-the-badge&logo=bilibili" alt="Bilibili"></a>
+<a href="https://github.com/Kauo7420?tab=repositories"><img src="https://img.shields.io/badge/GitHub-Development%20Projects-red?style=for-the-badge&logo=github" alt="GitHub"></a>
+</p>
 
-> 💡 *“Keep On Going, Never Give up!”*
-
-## ⚙️ Skills
-
-| Domain                | Skills & Tools                                                                 |
-|---------------------|--------------------------------------------------------------------------|
-| **Minecraft Development**   | Focused solely on translation and configuration                                                          |
-| **Video Creation**        | Capcut, OBS Studio, script planning and storyboarding                                      |
-| **Community Operation**        | Discord management, community event planning, server maintenance (Java Edition), user growth strategies          |
-| **Other**            | Git/GitHub, HTML/CSS/JS (lightweight frontend),                                        |
-
-## 🚀 Project Showcase
-
-### 🔥 Bilibili Video Series (Selected)
-
-- [《From Scratch: How to Create Your Own Modrinth Modpack! Easily Install Your Personal Minecraft Modpack》](https://www.bilibili.com/video/BV1im41197pN)  
-  *46,000+ views at time of collection | Step-by-step tutorial: Assemble your own Modrinth modpack*  
-- [《【Free Permanent MC Server】One-Minute Quick Start: Simple Guide to Setting Up a Server with JianHuan》](https://www.bilibili.com/video/BV12Q4y1c7vW)  
-  *35,000+ views at time of collection | A video testing Gofeng-style editing techniques*
-
-### 🛠️ Open Source Projects (GitHub Repositories)
-
-| Project Name                | Description                                      | Link                                                                 |
-|-------------------------|------------------------------------------|----------------------------------------------------------------------|
-| [MCPinpoint](https://github.com/Kauo7420/MCPinpoint) | A navigation site to quickly find your ideal Minecraft plugin. | [![GitHub](https://img.shields.io/badge/GitHub-Kauo7420-181717?logo=github)](https://github.com/Kauo7420/MCPinpoint) |
-| [PCL-HomePage](https://github.com/Kauo7420/PCL-HomePage) | A homepage configuration file based on the PCL2 launcher | [![GitHub](https://img.shields.io/badge/GitHub-Kauo7420-181717?logo=github)](https://github.com/Kauo7420/PCL-HomePage) |
-
-### 🌐 BlockVerse Community Ecosystem
-
-- **[BlockVerse QQ Group Entry](https://qm.qq.com/q/pytpZhA24M)**
-- **What is this group?**
-  > 💬 **Water Friend Group** (Chatting) | 🖥 **Server Admins Group** (Discussion) | 📂 **Resource Sharing** (Sharing good items)
-
-## 💬 Contact Me
-
-- 📫 **Bilibili**: [@Kauo7420](https://space.bilibili.com/375148183)
-- 💻 **GitHub**: [github.com/Kauo7420](https://github.com/Kauo7420)
-- 🐧 **QQ Group**: [BlockVerse Water Friend Group](https://qm.qq.com/q/pytpZhA24M)
-- 🌐 **Discord**: [BlockVerse Official Channel](https://discord.gg/UtT3M9qhRb) (Not frequently used)
-- 📧 **Email**: kauo7420@qq.com
-
-## 📊 GitHub Stats
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Kauo7420&show_icons=true&theme=radical&hide_border=true)  
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs?username=Kauo7420&layout=compact&theme=radical&hide_border=true)
-
-> ✨ *“I once spent a week building a castle in the game, but it burned to the ground due to a single mistake. I was angry, but I eventually realized that what truly mattered wasn't the castle, but the nights I learned to build it.”*  
-> 👉 [Join BlockVerse Water Friend Group](https://qm.qq.com/q/pytpZhA24M) | [Follow My Bilibili](https://space.bilibili.com/375148183)  
+</div>
 
 ---
 
-*This homepage will be updated irregularly (might take a long time...) ✨ | January 19, 2026 | Written by [Kauo7420](https://github.com/Kauo7420)*
+## About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+
+I am a creator deeply focused on the **Minecraft community**. With a strong understanding of **JVM internals and Minecraft server core (NMS)**, I specialize in solving performance bottlenecks under high-concurrency environments and producing in-depth technical documentation and tutorials.
+
+My core areas of focus:
+
+* **Server Architecture:** High-performance cluster design and load balancing based on Folia / Paper.
+* **Video Creation:** Producing beginner-friendly tutorials and deep dives into Minecraft mechanics and community ecosystems.
+* **Technical Documentation:** Extensive experience in long-term Markdown writing, authoring numerous foundational guides and tutorials.
+* **Open Source Contribution:** Actively contributing to open-source projects and gaining hands-on experience through practical development.
+
+> *"I once spent a whole week building a castle in-game, only to lose it all due to a single mistake. I was frustrated, but eventually realized — what truly mattered wasn’t the castle, but the nights I spent learning how to build it."*
+
+---
+
+## Tech Stack <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
+
+<div align="center">
+
+### 💻 Programming & Development Skills
+
+| Core Area | Tech Stack & Tools | Proficiency |
+|------------|---------------------|--------------|
+| Languages | HTML, CSS, JavaScript, Python | ⭐⭐⭐☆☆ |
+| Dev Tools | IntelliJ IDEA, Maven / Gradle, YourKit, Grafana | ⭐⭐☆☆☆ |
+
+### 🎮 Minecraft Technical Expertise
+
+| Category | Tech Stack / Skills | Proficiency | Description |
+|-----------|----------------------|--------------|--------------|
+| Server Core | Paper / Purpur / Folia | ⭐⭐⭐⭐⭐ | High-performance deployment & optimization |
+| Plugins | Spigot / Paper API | ⭐⭐⭐⭐☆ | Integration / modification / compatibility |
+| Mods | Fabric / Forge | ⭐⭐⭐⭐☆ | Modpack integration & adaptation |
+| Server Management | Pterodactyl / MCSManager | ⭐⭐⭐⭐☆ | Automated deployment & operations |
+| Performance Tuning | Spark / Timings / Aikar Flags | ⭐⭐⭐⭐⭐ | TPS, memory & GC optimization |
+| Network Architecture | Velocity / BungeeCord | ⭐⭐☆☆☆ | Proxy & multi-server clusters |
+| Permission Systems | LuckPerms | ⭐⭐⭐⭐⭐ | Permission architecture design |
+| Economy Systems | PlayerPoints / Vault | ⭐⭐⭐⭐☆ | Economy planning & integration |
+| Automation | Shell | ⭐⭐⭐☆☆ | Ops scripts |
+
+### 🎬 Video Production & Post-Processing
+
+| Category | Tools / Techniques | Proficiency | Description |
+|------------|---------------------|--------------|--------------|
+| Editing | Premiere Pro / CapCut | ⭐⭐⭐⭐⭐ | Editing & pacing |
+| Thumbnails | Photoshop / CapCut | ⭐⭐⭐⭐☆ | Thumbnail design |
+| Recording | OBS Studio | ⭐⭐⭐⭐⭐ | Gameplay capture & streaming |
+| Script Planning | Storyboards / Script Breakdown | ⭐⭐⭐⭐☆ | Content planning |
+
+### 🌍 Localization & Translation
+
+| Category | Skills | Proficiency | Description |
+|------------|---------|--------------|--------------|
+| Languages | EN → ZH-CN | ⭐⭐⭐⭐⭐ | Professional translation |
+| Terminology | Minecraft technical glossary | ⭐⭐⭐⭐⭐ | Unified terminology |
+| Plugin Localization | YAML / JSON / Lang files | ⭐⭐⭐⭐⭐ | Plugin text localization |
+| Mod Localization | i18n / assets/lang | ⭐⭐⭐⭐☆ | Fabric / Forge |
+| Documentation | Markdown / Wiki | ⭐⭐⭐⭐⭐ | Official documentation translation |
+| Proofreading | Semantic refinement | ⭐⭐⭐⭐☆ | Accuracy + readability |
+| Cultural Adaptation | Chinese player conventions | ⭐⭐⭐⭐⭐ | Cultural localization |
+
+### 🛠️ Toolchain & Workflow
+
+| Category | Tools | Description |
+|------------|--------|--------------|
+| Code Editing | VS Code / IntelliJ IDEA | Plugin dev & scripting |
+| Version Control | Git / GitHub | Version management |
+| Documentation | VuePress / VitePress / MkDocs | Tutorial sites |
+| Automation | GitHub Actions | CI/CD |
+| Design | Canva | UI / thumbnails / layouts |
+| Project Management | Notion / Obsidian | Planning & organization |
+
+</div>
+
+---
+
+## Content Creation & Education <img src="https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/65ba565823dceib1.gif" width="30">
+
+I am passionate about sharing knowledge and helping developers build high-quality Minecraft servers from scratch.
+
+* **Bilibili:** Video tutorials on server setup, modpack creation, and community content.
+* **Tech Blog:** In-depth articles on JVM tuning, GC mechanisms, and high-concurrency system design.
+
+<div align="left">
+<a href="https://space.bilibili.com/375148183"><b>🎬 Bilibili Channel</b></a> |
+<a href="https://kauo7420.github.io/docs/blog/"><b>📄 Technical Blog</b></a>
+</div>
+
+---
+
+## Collaboration & Contact <img src="https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/66e6c5081382flLJ.gif" width="30">
+
+If you're interested in **Minecraft server architecture consulting**, **custom plugin development**, or **technical content collaboration**, feel free to reach out:
+
+* 📧 **Email:** kauo7420@foxmail.com  
+* 💬 **Discord:** https://discord.gg/S28cQJM9bt  
+* 🐧 **QQ:** 2673861652
