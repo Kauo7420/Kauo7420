@@ -2,7 +2,7 @@
 
 # 👋 你好，我是 Kauo7420
 
-[English Version](README_en.md) | [Deutsche Version](README_de.md) | [日本語版](README_ja.md) | [한국어 버전](README_ko.md) | [Русская версия](README_ru.md) | [Versión en español](README_es.md) | [Version française](README_fr.md)
+[English Version](README_en.md) | [Deutsche Version](README_de.md) | [日本語版](README_ja.md) | [한국어 버전](README_ko.md) | [Русская версия](README_ru.md) | [Versión en español](README_es.md) | [Version française](README_fr.md) | [臺灣繁體](README_zh-TW.md)
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
